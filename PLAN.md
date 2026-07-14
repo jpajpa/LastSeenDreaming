@@ -2,18 +2,23 @@
 
 ## Product structure
 
-- `/` — editorial home page with animated atmosphere, studio introduction, client strip, selected work, and footer.
+- `/` — editorial home page with Sketch-exported atmosphere artwork, studio introduction, client strip, selected work, and footer.
 - `/projects` — project archive.
 - `/projects/[slug]` — media-led case study with next/previous links.
-- `/contact` — minimal direct-email contact page.
+- `/contact` — minimal direct-email contact page with a WebGPU atmosphere.
 
-## Technology
+## Visual system
 
-- Next.js App Router, React, and TypeScript.
-- Framer Motion for page and interface motion.
-- React Three Fiber and Drei for the cursor-driven featured-project scene, with a DOM fallback.
-- Sanity for editorial data and Mux for adaptive project video when production credentials are connected.
-- Vercel for the web deployment and Sanity Studio hosting for content editing.
+- Treat Sketch `Final / Home` as the desktop source of truth: soft turquoise-to-green fields sit behind editorial DOM typography on a warm-white paper surface.
+- Use the exported Sketch atmosphere artwork as the source of truth for the hero, dream, and contact atmospheres. Keep the artwork static until a reactive version can be made visually equivalent.
+- Keep all copy, navigation, project cards, links, and content in accessible HTML. GPU effects remain decorative.
+- Use the exported Sketch atmosphere layers as static fallback artwork. Never substitute WebGL or CSS gradients.
+
+## Rendering architecture
+
+- Render the Sketch atmosphere exports as ordinary transparent images with fixed desktop source dimensions and responsive scaling.
+- Keep all copy, navigation, project cards, links, and content in accessible HTML.
+- Continue using responsive Next.js images for project media; the unused WebGL showcase experiment is not part of the live visual system.
 
 ## Content model
 
@@ -24,6 +29,4 @@
 ## Delivery requirements
 
 - Make every desktop composition responsive for mobile and tablet.
-- Respect reduced-motion settings, preserve keyboard access, and provide non-WebGL project cards.
-- Lazy-load WebGL and video; use responsive image sizes and posters for media performance.
-- Verify routes, content fallbacks, project navigation, video playback, accessibility, and responsive layouts before release.
+- Preserve keyboard access, keep the atmosphere artwork available without client-side rendering, and verify Sketch visual alignment, project navigation, video playback, accessibility, and responsive layouts before release.

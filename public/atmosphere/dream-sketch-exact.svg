@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1007px" height="1014px" viewBox="0 0 1007 1014" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient x1="98.4963269%" y1="0%" x2="13.2644132%" y2="85.3432432%" id="dream-gradient">
+      <stop stop-color="#1BF005" offset="0%"/>
+      <stop stop-color="#48D3E4" offset="58.4088542%"/>
+    </linearGradient>
+    <filter x="-46.7%" y="-46%" width="193.5%" height="192%" filterUnits="objectBoundingBox" id="dream-blur">
+      <feGaussianBlur stdDeviation="81" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g stroke="none" fill="none" fill-rule="evenodd">
+    <g transform="translate(-173, -1762.5)" fill="url(#dream-gradient)">
+      <g transform="translate(64, 64)">
+        <g transform="translate(0, 1864)">
+          <path d="M593.227961,119.375924 C354.635754,256.930834 324.195909,316.858295 371.176483,445.760799 C418.157056,574.663303 792.809017,720.813383 853.354325,463.2632 C913.899633,205.713017 831.820169,-18.1789869 593.227961,119.375924 Z" filter="url(#dream-blur)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
