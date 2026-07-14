@@ -10,22 +10,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.6.1",
-    "@sanity/client": "^6.27.2",
     "@mux/mux-player-react": "^3.8.0",
+    "@sanity/client": "^6.27.2",
     "framer-motion": "^11.18.2",
     "next": "^16.2.10",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "sanity": "^3.72.0",
-    "three": "^0.172.0"
+    "sanity": "^3.72.0"
   },
   "devDependencies": {
     "@types/node": "^20.17.19",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@types/three": "^0.183.0",
     "typescript": "^5.9.3"
   }
 }
