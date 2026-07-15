@@ -8,35 +8,35 @@ const HERO_PATH = 'M1446.07126 778.66648C1445.7791 926.242943 1339.74638 1037.85
 
 const DREAM_PATH = 'M593.227961 119.375924C354.635754 256.930834 324.195909 316.858295 371.176483 445.760799C418.157056 574.663303 792.809017 720.813383 853.354325 463.2632C913.899633 205.713017 831.820169-18.1789869 593.227961 119.375924Z';
 
-function AtmosphereGradient({ id }: { id: AtmosphereVariant }) {
-  return <defs>
-    <linearGradient id={`${id}-atmosphere-gradient`} x1="100%" y1="0%" x2="12.125%" y2="85.343%">
-      <stop offset="0%" stopColor="#1BF005" />
-      <stop offset="58.4%" stopColor="#48D3E4" />
-    </linearGradient>
-  </defs>;
+function CloudLayers({ id, path, baseTransform }: { id: string; path: string; baseTransform: string }) {
+  return <>
+    <defs>
+      <linearGradient id={`${id}-grad`} x1="100%" y1="0%" x2="12.125%" y2="85.343%">
+        <stop offset="0%" stopColor="#1BF005" />
+        <stop offset="58.4%" stopColor="#48D3E4" />
+      </linearGradient>
+    </defs>
+    <g className="cloud-layer cloud-layer-1"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} /></g>
+    <g className="cloud-layer cloud-layer-2"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} opacity=".6" /></g>
+    <g className="cloud-layer cloud-layer-3"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} opacity=".4" /></g>
+  </>;
 }
 
 function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
-  const gradient = `url(#${variant}-atmosphere-gradient)`;
-
   if (variant === 'contact') {
     return <svg className="atmosphere-art" viewBox="0 0 1440 1080" preserveAspectRatio="xMidYMid meet" focusable="false">
-      <AtmosphereGradient id={variant} />
-      <path d={HERO_PATH} fill={gradient} transform="translate(-814 -112)" opacity=".9" />
+      <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(-814 -112)" />
     </svg>;
   }
 
   return <svg className="atmosphere-art" viewBox="0 0 1440 1359" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <AtmosphereGradient id={variant} />
-    <path d={HERO_PATH} fill={gradient} transform="translate(64 43.5)" />
+    <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(64 43.5)" />
   </svg>;
 }
 
 function DreamAtmosphere() {
   return <svg className="atmosphere-art" viewBox="0 0 1007 1014" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <AtmosphereGradient id="dream" />
-    <path d={DREAM_PATH} fill="url(#dream-atmosphere-gradient)" transform="translate(-109 165.5)" />
+    <CloudLayers id="dream" path={DREAM_PATH} baseTransform="translate(-109 165.5)" />
   </svg>;
 }
 
