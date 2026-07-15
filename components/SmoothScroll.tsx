@@ -17,8 +17,16 @@ export function SmoothScroll() {
 
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
+      if (!ticking) {
+        const actual = window.scrollY;
+        if (Math.abs(actual - current) > 2) {
+          current = actual;
+          target = actual;
+        }
+      }
       target += e.deltaY;
-      target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
+      const max = document.body.scrollHeight - window.innerHeight;
+      target = Math.max(0, Math.min(target, max));
       if (!ticking) {
         ticking = true;
         raf = requestAnimationFrame(update);

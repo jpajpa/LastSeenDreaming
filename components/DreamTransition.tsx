@@ -27,10 +27,12 @@ export function DreamTransition() {
       if (!href || href.startsWith('http') || href.startsWith('mailto:') || href === pathname) return;
 
       e.preventDefault();
+      if (phase !== 'idle') return;
       setPhase('out');
       setTimeout(() => {
+        window.scrollTo(0, 0);
         router.push(href);
-      }, 900);
+      }, 950);
     };
 
     document.addEventListener('click', handleClick);
