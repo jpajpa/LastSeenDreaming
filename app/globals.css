@@ -48,41 +48,46 @@ img { max-width: 100%; height: auto; }
 .hero h1 img { width: min(293px, 62vw); height: auto; filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgb(0 0 0 / 12%)); }
 .hero .atmosphere { top: 20.5px; left: 50%; z-index: 1; width: min(100vw, 1440px); aspect-ratio: 1440 / 1359; transform: translateX(-50%); }
 
-.atmosphere { width: min(108vw, 1564px); position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform, filter; filter: blur(48px); animation: cloud-fade-in 2.5s ease both; }
+.atmosphere { width: min(108vw, 1564px); position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform, filter; filter: blur(48px); animation: cloud-fade-in 2.5s ease both; -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 30%, transparent 100%); mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 30%, transparent 100%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
 @keyframes cloud-fade-in { from { opacity: 0; filter: blur(80px); } to { opacity: 1; filter: blur(48px); } }
 
 .cloud-layer { will-change: transform; transform-origin: center; }
-.cloud-layer-1 { animation: morph-1 18s ease-in-out infinite; }
-.cloud-layer-2 { animation: morph-2 24s ease-in-out infinite; }
-.cloud-layer-3 { animation: morph-3 30s ease-in-out infinite; }
+.cloud-layer-1 { animation: morph-1 20s ease-in-out infinite; }
+.cloud-layer-2 { animation: morph-2 28s ease-in-out infinite; }
+.cloud-layer-3 { animation: morph-3 35s ease-in-out infinite; }
 @keyframes morph-1 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  12% { transform: translate(50px, -35px) scale(1.12) rotate(1.2deg); }
-  28% { transform: translate(-40px, 55px) scale(0.88) rotate(-0.8deg); }
-  42% { transform: translate(65px, 20px) scale(1.15) rotate(0.6deg); }
-  58% { transform: translate(-30px, -50px) scale(0.9) rotate(-1.1deg); }
-  72% { transform: translate(45px, -25px) scale(1.1) rotate(0.9deg); }
-  86% { transform: translate(-55px, 35px) scale(0.92) rotate(-0.5deg); }
+  10% { transform: translate(25px, -18px) scale(1.06) rotate(3.5deg); }
+  22% { transform: translate(-20px, 30px) scale(0.94) rotate(-2.8deg); }
+  35% { transform: translate(35px, 12px) scale(1.08) rotate(5deg); }
+  48% { transform: translate(-15px, -25px) scale(0.93) rotate(-4.2deg); }
+  60% { transform: translate(28px, -10px) scale(1.05) rotate(3deg); }
+  72% { transform: translate(-32px, 22px) scale(0.95) rotate(-5.5deg); }
+  85% { transform: translate(18px, -20px) scale(1.04) rotate(2.5deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes morph-2 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  16% { transform: translate(-70px, 40px) scale(1.18) rotate(-1.5deg); }
-  33% { transform: translate(55px, -60px) scale(0.82) rotate(1.2deg); }
-  50% { transform: translate(-45px, -30px) scale(1.14) rotate(-0.7deg); }
-  66% { transform: translate(60px, 50px) scale(0.85) rotate(1.4deg); }
-  83% { transform: translate(-35px, -45px) scale(1.1) rotate(-1deg); }
+  12% { transform: translate(-35px, 22px) scale(1.09) rotate(-4.5deg); }
+  25% { transform: translate(28px, -30px) scale(0.9) rotate(3.8deg); }
+  38% { transform: translate(-22px, -15px) scale(1.07) rotate(-3deg); }
+  50% { transform: translate(30px, 25px) scale(0.92) rotate(5.2deg); }
+  62% { transform: translate(-18px, -28px) scale(1.06) rotate(-4deg); }
+  75% { transform: translate(25px, 18px) scale(0.94) rotate(3.5deg); }
+  88% { transform: translate(-30px, -12px) scale(1.05) rotate(-2.5deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes morph-3 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  14% { transform: translate(80px, 45px) scale(1.2) rotate(1.8deg); }
-  29% { transform: translate(-60px, -70px) scale(0.78) rotate(-1.3deg); }
-  43% { transform: translate(50px, -40px) scale(1.16) rotate(0.8deg); }
-  57% { transform: translate(-75px, 55px) scale(0.84) rotate(-1.6deg); }
-  71% { transform: translate(40px, -35px) scale(1.12) rotate(1.1deg); }
-  86% { transform: translate(-50px, 60px) scale(0.9) rotate(-0.6deg); }
+  11% { transform: translate(40px, 25px) scale(1.1) rotate(5.5deg); }
+  22% { transform: translate(-30px, -35px) scale(0.88) rotate(-4deg); }
+  33% { transform: translate(25px, -20px) scale(1.08) rotate(3.2deg); }
+  44% { transform: translate(-38px, 28px) scale(0.91) rotate(-5.8deg); }
+  56% { transform: translate(22px, -18px) scale(1.07) rotate(4.5deg); }
+  67% { transform: translate(-28px, 32px) scale(0.93) rotate(-3.5deg); }
+  78% { transform: translate(35px, -15px) scale(1.06) rotate(5deg); }
+  89% { transform: translate(-20px, 20px) scale(0.95) rotate(-2.8deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 
@@ -120,8 +125,28 @@ img { max-width: 100%; height: auto; }
 .project-card:nth-child(3) { width: 274px; height: 280px; }
 .project-card img, .media img, .hero-media img { object-fit: cover; transition: transform var(--motion-medium) var(--ease-smooth); }
 .project-card img.project-card-art { object-fit: contain; }
-.project-card:hover img, .project-card:focus-visible img { transform: scale(1.04); }
+.project-card:hover img, .project-card:focus-visible img { transform: scale(1.04); animation: none; }
 .archive-card:hover img { transform: scale(1.04); }
+.project-card:nth-child(1) img { animation: card-drift-1 14s ease-in-out infinite; }
+.project-card:nth-child(2) img { animation: card-drift-2 18s ease-in-out infinite; }
+.project-card:nth-child(3) img { animation: card-drift-3 16s ease-in-out infinite; }
+@keyframes card-drift-1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(3px, -4px) rotate(0.4deg) scale(1.008); }
+  50% { transform: translate(-2px, 3px) rotate(-0.3deg) scale(0.995); }
+  75% { transform: translate(4px, 2px) rotate(0.5deg) scale(1.005); }
+}
+@keyframes card-drift-2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  20% { transform: translate(-3px, 3px) rotate(-0.5deg) scale(1.006); }
+  45% { transform: translate(4px, -2px) rotate(0.35deg) scale(0.993); }
+  70% { transform: translate(-2px, -4px) rotate(-0.4deg) scale(1.007); }
+}
+@keyframes card-drift-3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  30% { transform: translate(4px, 3px) rotate(0.45deg) scale(0.994); }
+  60% { transform: translate(-3px, -3px) rotate(-0.5deg) scale(1.008); }
+}
 .project-card span { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; padding-bottom: 22%; color: white; font: 21px var(--sans); text-shadow: 0 1px 12px #000; opacity: 0; transition: opacity var(--motion-medium) var(--ease-smooth); }
 .project-card:hover span, .project-card:focus-visible span { opacity: 1; }
 
@@ -160,7 +185,10 @@ img { max-width: 100%; height: auto; }
 .projects-page-card img { width: 387px !important; height: 274px !important; left: 0 !important; top: 0 !important; object-fit: contain; transition: transform var(--motion-medium) var(--ease-smooth); }
 .projects-page-card span { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; color: white; font: 16px var(--sans); text-shadow: 0 1px 12px #000; opacity: 0; transition: opacity var(--motion-medium) var(--ease-smooth); }
 .project-card-reveal { width: auto; }
-.projects-page-card:hover img, .projects-page-card:focus-visible img { transform: scale(1.04); }
+.projects-page-card:nth-child(1) img, .project-card-reveal:nth-child(1) .projects-page-card img { animation: card-drift-1 14s ease-in-out infinite; }
+.projects-page-card:nth-child(2) img, .project-card-reveal:nth-child(2) .projects-page-card img { animation: card-drift-2 18s ease-in-out infinite; }
+.projects-page-card:nth-child(3) img, .project-card-reveal:nth-child(3) .projects-page-card img { animation: card-drift-3 16s ease-in-out infinite; }
+.projects-page-card:hover img, .projects-page-card:focus-visible img { transform: scale(1.04); animation: none; }
 .projects-page-card:hover span, .projects-page-card:focus-visible span { opacity: 1; }
 .projects-page .site-footer { margin-top: 96px; }
 
