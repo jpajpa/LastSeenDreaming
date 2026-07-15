@@ -36,7 +36,7 @@ function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
 
 function DreamAtmosphere() {
   return <svg className="atmosphere-art" viewBox="-100 -100 1200 1000" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers id="dream" path={DREAM_PATH} baseTransform="translate(100 50)" />
+    <CloudLayers id="dream" path={DREAM_PATH} baseTransform="translate(100 80) scale(1.15 0.9)" />
   </svg>;
 }
 
