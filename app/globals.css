@@ -48,12 +48,12 @@ img { max-width: 100%; height: auto; }
 .hero h1 img { width: min(293px, 62vw); height: auto; filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgb(0 0 0 / 12%)); }
 .hero .atmosphere { top: 20.5px; left: 50%; z-index: 1; width: min(100vw, 1440px); aspect-ratio: 1440 / 1359; transform: translateX(-50%); }
 
-.atmosphere { width: min(108vw, 1564px); position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform, filter; filter: blur(42px); animation: cloud-fade-in 2.5s ease both; -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 30%, transparent 100%); mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 30%, transparent 100%); }
+.atmosphere { width: min(108vw, 1564px); position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform; animation: cloud-fade-in 2.5s ease both; -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 30%, transparent 100%); mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, black 30%, transparent 100%); }
 .atmosphere--dream { -webkit-mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 40%, transparent 100%); mask-image: radial-gradient(ellipse 95% 90% at 50% 50%, black 40%, transparent 100%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
-@keyframes cloud-fade-in { from { opacity: 0; filter: blur(72px); } to { opacity: 1; filter: blur(42px); } }
+@keyframes cloud-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
-.cloud-layer { transform-origin: center; }
+.cloud-layer { transform-origin: center; filter: blur(42px); }
 .cloud-layer-1 { animation: morph-1 20s ease-in-out infinite; }
 .cloud-layer-2 { animation: morph-2 28s ease-in-out infinite; }
 .cloud-layer-3 { animation: morph-3 35s ease-in-out infinite; }
@@ -115,7 +115,7 @@ img { max-width: 100%; height: auto; }
 .dream p:last-of-type { top: 514px; left: 466px; width: 718px; text-align: center; z-index: 0; }
 .dream em { color: inherit; font-style: normal; }
 .dream .muted { color: var(--dream-copy); font-size: 42px; opacity: .55; }
-.dream .atmosphere--dream { top: -180px; left: 30px; z-index: 1; width: 1100px; height: 1100px; }
+.dream .atmosphere--dream { top: -20px; left: 50%; z-index: 1; width: 650px; height: 650px; transform: translateX(-50%); }
 
 .showcase { width: min(1312px, calc(100% - 128px)); height: 645px; margin: 0 auto 48px; padding: 64px 0 0; }
 .showcase h2 { margin: 0 0 64px; text-align: center; font: 48px/1.3125 var(--serif); font-weight: normal; }
@@ -210,7 +210,7 @@ img { max-width: 100%; height: auto; }
   .dream p:first-of-type { top: 118px; left: 20px; right: 20px; width: auto; white-space: normal; text-align: center; }
   .dream p:last-of-type { top: 318px; right: 20px; width: auto; left: 20px; white-space: normal; text-align: center; }
   .dream .muted { font-size: 29px; }
-  .dream .atmosphere--dream { top: 90px; left: 50%; width: 360px; height: 365px; transform: translateX(-50%); }
+  .dream .atmosphere--dream { top: 40px; left: 50%; width: 320px; height: 320px; transform: translateX(-50%); }
   .showcase { width: calc(100% - 40px); height: auto; margin: 0 auto; padding: 55px 0 80px; }
   .showcase h2 { margin-bottom: 35px; font-size: 43px; }
   .projects-row { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 0; }
