@@ -22,10 +22,10 @@ export function Reveal({ children, className, delay = 0 }: MotionProps) {
 
   return <motion.div
     className={className}
-    initial={{ opacity: 0, y: 48 }}
+    initial={{ opacity: 0, y: 64 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.08 }}
-    transition={reducedMotion ? { duration: 0 } : { duration: 1.4, delay, ease: easing }}
+    viewport={{ once: false, amount: 0.15 }}
+    transition={reducedMotion ? { duration: 0 } : { duration: 1.6, delay, ease: easing }}
   >
     {children}
   </motion.div>;

@@ -24,18 +24,18 @@ function CloudLayers({ id, path, baseTransform }: { id: string; path: string; ba
 
 function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
   if (variant === 'contact') {
-    return <svg className="atmosphere-art" viewBox="0 0 1440 1080" preserveAspectRatio="xMidYMid meet" focusable="false">
+    return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
       <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(-814 -112)" />
     </svg>;
   }
 
-  return <svg className="atmosphere-art" viewBox="0 0 1440 1359" preserveAspectRatio="xMidYMid meet" focusable="false">
+  return <svg className="atmosphere-art" viewBox="-200 -200 1840 1759" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
     <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(64 43.5)" />
   </svg>;
 }
 
 function DreamAtmosphere() {
-  return <svg className="atmosphere-art" viewBox="0 0 1007 1014" preserveAspectRatio="xMidYMid meet" focusable="false">
+  return <svg className="atmosphere-art" viewBox="-200 -200 1407 1414" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
     <CloudLayers id="dream" path={DREAM_PATH} baseTransform="translate(-109 165.5)" />
   </svg>;
 }
