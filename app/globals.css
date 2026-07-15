@@ -48,9 +48,15 @@ img { max-width: 100%; height: auto; }
 .hero h1 img { width: min(293px, 62vw); height: auto; filter: brightness(0) invert(1) drop-shadow(0 2px 12px rgb(0 0 0 / 12%)); }
 .hero .atmosphere { top: 20.5px; left: 50%; z-index: 1; width: min(100vw, 1440px); aspect-ratio: 1440 / 1359; transform: translateX(-50%); }
 
-.atmosphere { position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform, filter; filter: blur(42px); animation: cloud-fade-in 2.5s ease both; box-sizing: content-box; padding: 60px; margin: -60px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 35%, rgba(0,0,0,0.5) 70%, transparent 88%); mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 35%, rgba(0,0,0,0.5) 70%, transparent 88%); }
+.atmosphere { position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform, filter; filter: blur(42px); animation: cloud-fade-in 2.5s ease both, hue-drift 35s ease-in-out infinite; box-sizing: content-box; padding: 120px; margin: -120px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, rgba(0,0,0,0.4) 62%, transparent 82%); mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 30%, rgba(0,0,0,0.4) 62%, transparent 82%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
-@keyframes cloud-fade-in { from { opacity: 0; filter: blur(72px); } to { opacity: 1; filter: blur(42px); } }
+@keyframes cloud-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hue-drift {
+  0%, 100% { filter: blur(42px) hue-rotate(0deg); }
+  25% { filter: blur(42px) hue-rotate(14deg); }
+  50% { filter: blur(42px) hue-rotate(-8deg); }
+  75% { filter: blur(42px) hue-rotate(10deg); }
+}
 
 .cloud-layer { transform-origin: center; }
 .cloud-layer-1 { animation: morph-1 20s ease-in-out infinite; }
@@ -58,36 +64,36 @@ img { max-width: 100%; height: auto; }
 .cloud-layer-3 { animation: morph-3 35s ease-in-out infinite; }
 @keyframes morph-1 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  10% { transform: translate(30px, -22px) scale(1.07) rotate(4.4deg); }
-  22% { transform: translate(-25px, 38px) scale(0.93) rotate(-3.5deg); }
-  35% { transform: translate(42px, 15px) scale(1.09) rotate(6.2deg); }
-  48% { transform: translate(-18px, -30px) scale(0.92) rotate(-5.2deg); }
-  60% { transform: translate(34px, -12px) scale(1.06) rotate(3.8deg); }
-  72% { transform: translate(-40px, 28px) scale(0.94) rotate(-6.8deg); }
-  85% { transform: translate(22px, -25px) scale(1.05) rotate(3.2deg); }
+  10% { transform: translate(30px, -22px) scale(1.04) rotate(4.4deg); }
+  22% { transform: translate(-25px, 38px) scale(0.96) rotate(-3.5deg); }
+  35% { transform: translate(42px, 15px) scale(1.05) rotate(6.2deg); }
+  48% { transform: translate(-18px, -30px) scale(0.95) rotate(-5.2deg); }
+  60% { transform: translate(34px, -12px) scale(1.03) rotate(3.8deg); }
+  72% { transform: translate(-40px, 28px) scale(0.97) rotate(-6.8deg); }
+  85% { transform: translate(22px, -25px) scale(1.04) rotate(3.2deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes morph-2 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  12% { transform: translate(-48px, 32px) scale(1.1) rotate(-6.5deg); }
-  25% { transform: translate(40px, -42px) scale(0.89) rotate(5.5deg); }
-  38% { transform: translate(-32px, -20px) scale(1.08) rotate(-4.5deg); }
-  50% { transform: translate(44px, 35px) scale(0.91) rotate(7.5deg); }
-  62% { transform: translate(-26px, -40px) scale(1.07) rotate(-5.8deg); }
-  75% { transform: translate(35px, 25px) scale(0.93) rotate(5deg); }
-  88% { transform: translate(-42px, -18px) scale(1.06) rotate(-3.8deg); }
+  12% { transform: translate(-48px, 32px) scale(1.06) rotate(-6.5deg); }
+  25% { transform: translate(40px, -42px) scale(0.93) rotate(5.5deg); }
+  38% { transform: translate(-32px, -20px) scale(1.05) rotate(-4.5deg); }
+  50% { transform: translate(44px, 35px) scale(0.94) rotate(7.5deg); }
+  62% { transform: translate(-26px, -40px) scale(1.04) rotate(-5.8deg); }
+  75% { transform: translate(35px, 25px) scale(0.96) rotate(5deg); }
+  88% { transform: translate(-42px, -18px) scale(1.03) rotate(-3.8deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 @keyframes morph-3 {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-  11% { transform: translate(55px, 35px) scale(1.12) rotate(8deg); }
-  22% { transform: translate(-44px, -48px) scale(0.86) rotate(-6deg); }
-  33% { transform: translate(35px, -28px) scale(1.1) rotate(5deg); }
-  44% { transform: translate(-52px, 40px) scale(0.89) rotate(-8.5deg); }
-  56% { transform: translate(32px, -25px) scale(1.09) rotate(6.5deg); }
-  67% { transform: translate(-40px, 45px) scale(0.91) rotate(-5.2deg); }
-  78% { transform: translate(48px, -20px) scale(1.08) rotate(7.2deg); }
-  89% { transform: translate(-28px, 28px) scale(0.93) rotate(-4deg); }
+  11% { transform: translate(55px, 35px) scale(1.07) rotate(8deg); }
+  22% { transform: translate(-44px, -48px) scale(0.92) rotate(-6deg); }
+  33% { transform: translate(35px, -28px) scale(1.06) rotate(5deg); }
+  44% { transform: translate(-52px, 40px) scale(0.93) rotate(-8.5deg); }
+  56% { transform: translate(32px, -25px) scale(1.05) rotate(6.5deg); }
+  67% { transform: translate(-40px, 45px) scale(0.94) rotate(-5.2deg); }
+  78% { transform: translate(48px, -20px) scale(1.04) rotate(7.2deg); }
+  89% { transform: translate(-28px, 28px) scale(0.96) rotate(-4deg); }
   100% { transform: translate(0, 0) scale(1) rotate(0deg); }
 }
 
