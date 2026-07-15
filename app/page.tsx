@@ -27,10 +27,10 @@ const clients = [
 
 export default function HomePage() {
   return <main>
-    <section className="hero">
+    <Reveal className="hero-reveal"><section className="hero">
       <Atmosphere />
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
-    </section>
+    </section></Reveal>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
       <p className="muted">Last Seen Dreaming is a London production house that chases those ideas and turns them into visuals.</p>
       <p>From music videos to brand campaigns and from daydream to delivery.</p>
@@ -40,8 +40,8 @@ export default function HomePage() {
         </span>)}
       </div>
     </section></Reveal>
-    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don’t chase them</p></section></Reveal>
+    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don't chase them</p></section></Reveal>
     <Reveal className="home-showcase-reveal"><ProjectShowcase projects={projects.filter((project) => project.featured)} /></Reveal>
-    <Footer />
+    <Reveal><Footer /></Reveal>
   </main>;
 }

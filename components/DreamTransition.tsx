@@ -15,7 +15,7 @@ export function DreamTransition() {
       return;
     }
     setPhase('in');
-    const timer = setTimeout(() => setPhase('idle'), 800);
+    const timer = setTimeout(() => setPhase('idle'), 1200);
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -30,7 +30,7 @@ export function DreamTransition() {
       setPhase('out');
       setTimeout(() => {
         router.push(href);
-      }, 600);
+      }, 900);
     };
 
     document.addEventListener('click', handleClick);

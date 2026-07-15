@@ -11,26 +11,33 @@ export function SmoothScroll() {
     let current = window.scrollY;
     let target = window.scrollY;
     let raf: number;
+    let ticking = false;
 
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
-      target += e.deltaY * 0.85;
+      target += e.deltaY;
       target = Math.max(0, Math.min(target, document.body.scrollHeight - window.innerHeight));
+      if (!ticking) {
+        ticking = true;
+        raf = requestAnimationFrame(update);
+      }
     };
 
     window.addEventListener('wheel', onWheel, { passive: false });
 
     function update() {
       current = lerp(current, target, 0.12);
-      if (Math.abs(current - target) < 0.3) {
+      if (Math.abs(current - target) < 0.5) {
         current = target;
+        window.scrollTo(0, current);
+        ticking = false;
+        return;
       }
       window.scrollTo(0, current);
       raf = requestAnimationFrame(update);
     }
-    raf = requestAnimationFrame(update);
 
     return () => {
       window.removeEventListener('wheel', onWheel);
