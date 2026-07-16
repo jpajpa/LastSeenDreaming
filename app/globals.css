@@ -48,10 +48,10 @@ img { max-width: 100%; height: auto; }
 .hero h1 img { width: min(293px, 62vw); height: auto; filter: brightness(0) invert(1); }
 .hero .atmosphere { top: -260px; left: 50%; z-index: 1; width: min(100vw, 1440px); aspect-ratio: 1440 / 1359; translate: -50% 0; animation: cloud-fade-in 2.5s ease both, cloud-float-hero 55s ease-in-out infinite; }
 
-.atmosphere { --cloud-blur: 42px; position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform; filter: blur(var(--cloud-blur)); animation: cloud-fade-in 2.5s ease both; box-sizing: content-box; padding: 160px; margin: -160px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 28%, rgba(0,0,0,0.35) 58%, transparent 78%); mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 28%, rgba(0,0,0,0.35) 58%, transparent 78%); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
-.atmosphere--dream { --cloud-blur: 34px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 26%, rgba(0,0,0,0.35) 55%, transparent 76%); mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 26%, rgba(0,0,0,0.35) 55%, transparent 76%); }
-.atmosphere--wander { --cloud-blur: 32px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 42% 52%, black 24%, rgba(0,0,0,0.35) 54%, transparent 76%); mask-image: radial-gradient(ellipse 100% 100% at 42% 52%, black 24%, rgba(0,0,0,0.35) 54%, transparent 76%); }
-.atmosphere--dream-right { --cloud-blur: 26px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 52% 42%, black 22%, rgba(0,0,0,0.3) 52%, transparent 74%); mask-image: radial-gradient(ellipse 100% 100% at 52% 42%, black 22%, rgba(0,0,0,0.3) 52%, transparent 74%); }
+.atmosphere { --cloud-blur: 42px; position: absolute; overflow: visible; pointer-events: none; isolation: isolate; background: transparent; will-change: transform; filter: blur(var(--cloud-blur)); animation: cloud-fade-in 2.5s ease both; box-sizing: content-box; padding: 100px; margin: -100px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 24%, rgba(0,0,0,0.3) 50%, transparent 72%); mask-image: radial-gradient(ellipse 100% 100% at 50% 50%, black 24%, rgba(0,0,0,0.3) 50%, transparent 72%); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.atmosphere--dream { --cloud-blur: 34px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); }
+.atmosphere--wander { --cloud-blur: 32px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 42% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); mask-image: radial-gradient(ellipse 100% 100% at 42% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); }
+.atmosphere--dream-right { --cloud-blur: 26px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 52% 42%, black 18%, rgba(0,0,0,0.25) 44%, transparent 68%); mask-image: radial-gradient(ellipse 100% 100% at 52% 42%, black 18%, rgba(0,0,0,0.25) 44%, transparent 68%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
 @keyframes cloud-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
@@ -189,7 +189,7 @@ img { max-width: 100%; height: auto; }
 .dream { height: 769px; min-height: 0; margin-top: 260px; position: relative; overflow: visible; font: 42px/55px var(--serif); }
 .dream p { position: absolute; z-index: 2; margin: 0; color: var(--dream-copy); letter-spacing: -.233px; white-space: nowrap; }
 .dream p:first-of-type { top: 200px; left: 128px; width: 821px; text-align: center; }
-.dream p:last-of-type { top: 514px; left: 466px; width: 718px; text-align: center; z-index: 0; }
+.dream p:last-of-type { top: 514px; left: 466px; width: 718px; text-align: center; z-index: 2; }
 .dream em { color: inherit; font-style: normal; }
 .dream .muted { color: var(--dream-copy); font-size: 42px; opacity: .55; }
 .atmosphere--dream .cloud-layer-1 { animation-duration: 13s; }
@@ -301,6 +301,7 @@ img { max-width: 100%; height: auto; }
   .showcase h2 { margin-bottom: 35px; font-size: 43px; }
   .projects-row { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; }
   .project-card, .project-card:nth-child(1), .project-card:nth-child(2), .project-card:nth-child(3) { width: 100%; max-width: none; height: unset; aspect-ratio: 1.41; margin: 0; overflow: visible; flex: none; display: block; }
+  .project-card:nth-child(3) { display: none; }
   .project-card img.project-card-art { object-fit: contain; }
   .project-card span { font: 14px var(--sans); padding-bottom: 16px; }
   .site-footer { grid-template-columns: auto 1fr auto; padding: 40px 20px 35px; align-items: start; gap: 0; }
