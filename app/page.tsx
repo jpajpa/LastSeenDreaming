@@ -27,13 +27,13 @@ const clients = [
 
 export default function HomePage() {
   return <main>
-    <Reveal className="hero-reveal"><section className="hero">
+    <section className="hero">
       <Atmosphere />
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
-    </section></Reveal>
+    </section>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
       <Atmosphere variant="wander" />
-      <p className="muted">Last Seen Dreaming is a London production house that chases those ideas and turns them into visuals.</p>
+      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
       <div className="client-strip" aria-label="Selected clients">
         {clients.map((client) => <span className={`client-logo client-logo--${client.size}`} key={client.name}>
           <Image src={client.image} alt={client.name} sizes="(max-width: 700px) 120px, 150px" />
