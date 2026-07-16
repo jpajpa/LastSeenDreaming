@@ -1,4 +1,4 @@
-export type AtmosphereVariant = 'hero' | 'dream' | 'contact';
+export type AtmosphereVariant = 'hero' | 'dream' | 'contact' | 'wander' | 'dream-right';
 
 type AtmosphereProps = {
   variant?: AtmosphereVariant;
@@ -40,8 +40,27 @@ function DreamAtmosphere() {
   </svg>;
 }
 
+function WanderAtmosphere() {
+  return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
+    <CloudLayers id="wander" path={HERO_PATH} baseTransform="translate(100 80) scale(0.7)" />
+  </svg>;
+}
+
+function DreamRightAtmosphere() {
+  return <svg className="atmosphere-art" viewBox="-50 -50 1050 950" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
+    <CloudLayers id="dream-right" path={DREAM_PATH} baseTransform="translate(0 0)" />
+  </svg>;
+}
+
 export function Atmosphere({ variant = 'hero' }: AtmosphereProps) {
+  let content;
+  switch (variant) {
+    case 'dream': content = <DreamAtmosphere />; break;
+    case 'wander': content = <WanderAtmosphere />; break;
+    case 'dream-right': content = <DreamRightAtmosphere />; break;
+    default: content = <HeroAtmosphere variant={variant as 'hero' | 'contact'} />;
+  }
   return <div className={`atmosphere atmosphere--${variant}`} aria-hidden="true">
-    {variant === 'dream' ? <DreamAtmosphere /> : <HeroAtmosphere variant={variant} />}
+    {content}
   </div>;
 }

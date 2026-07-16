@@ -32,15 +32,15 @@ export default function HomePage() {
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
     </section></Reveal>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
+      <Atmosphere variant="wander" />
       <p className="muted">Last Seen Dreaming is a London production house that chases those ideas and turns them into visuals.</p>
-      <p>From music videos to brand campaigns and from daydream to delivery.</p>
       <div className="client-strip" aria-label="Selected clients">
         {clients.map((client) => <span className={`client-logo client-logo--${client.size}`} key={client.name}>
           <Image src={client.image} alt={client.name} sizes="(max-width: 700px) 120px, 150px" />
         </span>)}
       </div>
     </section></Reveal>
-    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don't chase them</p></section></Reveal>
+    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><Atmosphere variant="dream-right" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don't chase them</p></section></Reveal>
     <Reveal className="home-showcase-reveal"><ProjectShowcase projects={projects.filter((project) => project.featured)} /></Reveal>
     <Reveal><Footer /></Reveal>
   </main>;
