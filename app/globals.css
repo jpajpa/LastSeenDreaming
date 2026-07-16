@@ -128,18 +128,18 @@ img { max-width: 100%; height: auto; }
 }
 @keyframes cloud-float-wander {
   0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  6% { transform: translate(120px, 10px) rotate(1.4deg) scale(1.02); }
-  14% { transform: translate(-50px, 100px) rotate(-2deg) scale(0.97); }
-  21% { transform: translate(150px, 30px) rotate(1deg) scale(1.02); }
-  30% { transform: translate(-100px, 5px) rotate(-1.2deg) scale(0.96); }
-  38% { transform: translate(70px, 160px) rotate(2.2deg) scale(1.03); }
-  47% { transform: translate(-150px, 15px) rotate(-0.8deg) scale(0.98); }
-  54% { transform: translate(80px, 8px) rotate(1.8deg) scale(1.02); }
-  63% { transform: translate(-120px, 80px) rotate(-2deg) scale(0.96); }
-  71% { transform: translate(130px, 12px) rotate(1.2deg) scale(1.01); }
-  79% { transform: translate(-30px, 130px) rotate(-1.4deg) scale(0.97); }
-  88% { transform: translate(100px, 6px) rotate(1.6deg) scale(1.02); }
-  95% { transform: translate(-50px, 30px) rotate(-0.6deg) scale(0.99); }
+  6% { transform: translate(280px, 10px) rotate(1.4deg) scale(1.02); }
+  14% { transform: translate(-180px, 100px) rotate(-2deg) scale(0.97); }
+  21% { transform: translate(380px, 30px) rotate(1deg) scale(1.02); }
+  30% { transform: translate(-220px, 5px) rotate(-1.2deg) scale(0.96); }
+  38% { transform: translate(300px, 160px) rotate(2.2deg) scale(1.03); }
+  47% { transform: translate(-260px, 15px) rotate(-0.8deg) scale(0.98); }
+  54% { transform: translate(340px, 8px) rotate(1.8deg) scale(1.02); }
+  63% { transform: translate(-200px, 80px) rotate(-2deg) scale(0.96); }
+  71% { transform: translate(360px, 12px) rotate(1.2deg) scale(1.01); }
+  79% { transform: translate(-150px, 130px) rotate(-1.4deg) scale(0.97); }
+  88% { transform: translate(300px, 6px) rotate(1.6deg) scale(1.02); }
+  95% { transform: translate(-100px, 30px) rotate(-0.6deg) scale(0.99); }
   100% { transform: translate(0, 0) rotate(0deg) scale(1); }
 }
 @keyframes cloud-float-dream-right {
@@ -159,18 +159,18 @@ img { max-width: 100%; height: auto; }
 }
 @keyframes cloud-float-contact {
   0% { transform: translate(0, 0) rotate(0deg); }
-  6% { transform: translate(320px, -50px) rotate(0.8deg); }
-  13% { transform: translate(-180px, 80px) rotate(-1.4deg); }
-  21% { transform: translate(400px, 30px) rotate(1.2deg); }
-  28% { transform: translate(-100px, -120px) rotate(-0.6deg); }
-  36% { transform: translate(-280px, 60px) rotate(1.6deg); }
-  44% { transform: translate(360px, -100px) rotate(-1deg); }
-  52% { transform: translate(-240px, -40px) rotate(0.8deg); }
-  59% { transform: translate(380px, 100px) rotate(-1.4deg); }
-  67% { transform: translate(-200px, -80px) rotate(1.2deg); }
-  75% { transform: translate(340px, 60px) rotate(-0.8deg); }
-  83% { transform: translate(-260px, -30px) rotate(1deg); }
-  91% { transform: translate(160px, 50px) rotate(-0.6deg); }
+  6% { transform: translate(500px, -50px) rotate(0.8deg); }
+  13% { transform: translate(-300px, 80px) rotate(-1.4deg); }
+  21% { transform: translate(650px, 30px) rotate(1.2deg); }
+  28% { transform: translate(-150px, -120px) rotate(-0.6deg); }
+  36% { transform: translate(-450px, 60px) rotate(1.6deg); }
+  44% { transform: translate(580px, -100px) rotate(-1deg); }
+  52% { transform: translate(-400px, -40px) rotate(0.8deg); }
+  59% { transform: translate(620px, 100px) rotate(-1.4deg); }
+  67% { transform: translate(-350px, -80px) rotate(1.2deg); }
+  75% { transform: translate(550px, 60px) rotate(-0.8deg); }
+  83% { transform: translate(-420px, -30px) rotate(1deg); }
+  91% { transform: translate(300px, 50px) rotate(-0.6deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
@@ -192,7 +192,7 @@ img { max-width: 100%; height: auto; }
 .client-logo--universal { --client-logo-scale: 1.1; }
 .client-logo:hover img { filter: grayscale(0); opacity: .82; }
 
-.dream { height: 769px; min-height: 0; margin-top: 165px; position: relative; overflow: visible; font: 42px/55px var(--serif); }
+.dream { height: 769px; min-height: 0; margin-top: 260px; position: relative; overflow: visible; font: 42px/55px var(--serif); }
 .dream p { position: absolute; z-index: 2; margin: 0; color: var(--dream-copy); letter-spacing: -.233px; white-space: nowrap; }
 .dream p:first-of-type { top: 200px; left: 128px; width: 821px; text-align: center; }
 .dream p:last-of-type { top: 514px; left: 466px; width: 718px; text-align: center; z-index: 0; }
@@ -207,8 +207,8 @@ img { max-width: 100%; height: auto; }
 .atmosphere--dream-right .cloud-layer-2 { animation-duration: 16s; }
 .atmosphere--dream-right .cloud-layer-3 { animation-duration: 20s; }
 
-.showcase { width: min(1312px, calc(100% - 128px)); height: 645px; margin: 0 auto 48px; padding: 64px 0 0; }
-.showcase h2 { margin: 0 0 64px; text-align: center; font: 48px/1.3125 var(--serif); font-weight: normal; }
+.showcase { width: min(1312px, calc(100% - 128px)); height: 645px; margin: 0 auto 0; padding: 64px 0 0; }
+.showcase h2 { margin: 0 0 64px; text-align: center; font: 48px/1.3125 var(--serif); font-weight: normal; padding-top: 60px; }
 .projects-row { height: 454px; display: flex; justify-content: center; align-items: flex-start; gap: 96px; padding-top: 60px; }
 .project-card { position: relative; overflow: visible; flex: 0 0 auto; transition: transform var(--motion-medium) var(--ease-smooth); }
 .project-card:nth-child(1) { width: 300px; height: 274px; }
@@ -241,7 +241,7 @@ img { max-width: 100%; height: auto; }
 .project-card span { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; padding-bottom: 22%; color: white; font: 21px var(--sans); text-shadow: 0 1px 12px #000; opacity: 0; transition: opacity var(--motion-medium) var(--ease-smooth); }
 .project-card:hover span, .project-card:focus-visible span { opacity: 1; }
 
-.site-footer { max-width: 1312px; margin: 0 auto; padding: 96px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; color: var(--muted); font-size: 12px; }
+.site-footer { max-width: 1312px; margin: 0 auto; padding: 48px 96px 96px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; color: var(--muted); font-size: 12px; }
 .footer-mark { color: var(--ink); font-size: 20px; justify-self: start; }
 .footer-mark img { display: block; width: 105px; height: auto; }
 .site-footer p { margin: 0; justify-self: start; padding-left: 24px; }
@@ -265,7 +265,7 @@ img { max-width: 100%; height: auto; }
 .gallery img { width: 100%; display: block; border-radius: 11px; }
 .project-nav { width: min(1312px, calc(100% - 56px)); margin: 100px auto 0; display: flex; justify-content: space-between; }
 
-.contact-page { min-height: 100svh; overflow: hidden; display: grid; place-items: center; position: relative; text-align: center; background: #fff; }
+.contact-page { min-height: 100svh; overflow: clip; display: grid; place-items: center; position: relative; text-align: center; background: #fff; }
 .contact-page .atmosphere { top: 50%; left: 50%; width: max(100vw, 133.334svh); height: max(100svh, 75vw); translate: -50% -50%; animation: cloud-fade-in 2.5s ease both, hue-drift 35s ease-in-out infinite, cloud-float-contact 60s ease-in-out infinite; }
 .contact-page .contact-content { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding-top: 98px; }
 .contact-page a { display: block; color: #000; font: clamp(28px, 2.778vw, 40px)/1.3 var(--serif); text-shadow: 0 12px 24px rgb(0 0 0 / 10%); }
@@ -305,8 +305,8 @@ img { max-width: 100%; height: auto; }
   .dream .atmosphere--dream-right { top: 300px; left: 15%; right: auto; width: 260px; height: 210px; translate: -50% 0; --cloud-blur: 16px; }
   .showcase { width: calc(100% - 40px); height: auto; margin: 0 auto; padding: 55px 0 80px; }
   .showcase h2 { margin-bottom: 35px; font-size: 43px; }
-  .projects-row { height: auto; display: flex; flex-direction: column; gap: 40px; padding: 0; align-items: center; }
-  .project-card, .project-card:nth-child(1), .project-card:nth-child(2), .project-card:nth-child(3) { width: calc(100% - 20px); max-width: 340px; height: unset; aspect-ratio: 1.41; margin: 0; overflow: visible; flex: none; display: block; }
+  .projects-row { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; }
+  .project-card, .project-card:nth-child(1), .project-card:nth-child(2), .project-card:nth-child(3) { width: 100%; max-width: none; height: unset; aspect-ratio: 1.41; margin: 0; overflow: visible; flex: none; display: block; }
   .project-card img.project-card-art { object-fit: contain; }
   .project-card span { font: 14px var(--sans); padding-bottom: 16px; }
   .site-footer { grid-template-columns: auto 1fr auto; padding: 40px 20px 35px; align-items: start; gap: 0; }
@@ -346,18 +346,18 @@ img { max-width: 100%; height: auto; }
 
 @keyframes cloud-float-contact-mobile {
   0% { transform: translate(0, 0) rotate(0deg); }
-  6% { transform: translate(100px, -30px) rotate(0.8deg); }
-  13% { transform: translate(-60px, 50px) rotate(-1.4deg); }
-  21% { transform: translate(120px, 20px) rotate(1.2deg); }
-  28% { transform: translate(-40px, -70px) rotate(-0.6deg); }
-  36% { transform: translate(-100px, 40px) rotate(1.6deg); }
-  44% { transform: translate(80px, -60px) rotate(-1deg); }
-  52% { transform: translate(-80px, -25px) rotate(0.8deg); }
-  59% { transform: translate(110px, 60px) rotate(-1.4deg); }
-  67% { transform: translate(-50px, -50px) rotate(1.2deg); }
-  75% { transform: translate(90px, 40px) rotate(-0.8deg); }
-  83% { transform: translate(-70px, -20px) rotate(1deg); }
-  91% { transform: translate(40px, 30px) rotate(-0.6deg); }
+  6% { transform: translate(220px, -30px) rotate(0.8deg); }
+  13% { transform: translate(-160px, 50px) rotate(-1.4deg); }
+  21% { transform: translate(280px, 20px) rotate(1.2deg); }
+  28% { transform: translate(-80px, -70px) rotate(-0.6deg); }
+  36% { transform: translate(-200px, 40px) rotate(1.6deg); }
+  44% { transform: translate(250px, -60px) rotate(-1deg); }
+  52% { transform: translate(-180px, -25px) rotate(0.8deg); }
+  59% { transform: translate(260px, 60px) rotate(-1.4deg); }
+  67% { transform: translate(-140px, -50px) rotate(1.2deg); }
+  75% { transform: translate(230px, 40px) rotate(-0.8deg); }
+  83% { transform: translate(-170px, -20px) rotate(1deg); }
+  91% { transform: translate(120px, 30px) rotate(-0.6deg); }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
