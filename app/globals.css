@@ -218,14 +218,17 @@ video { max-width: 100%; }
 .blob-frame-sharp, .blob-frame-blurred { position: absolute; inset: 0; }
 .blob-frame-sharp {
   z-index: 1;
-  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 60%);
-  mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 60%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 70%);
+  mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 70%);
 }
 .blob-frame-blurred {
   z-index: 0;
-  filter: blur(14px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 50%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 20%, black 50%, black 100%);
+  filter: blur(18px);
+  box-sizing: content-box;
+  padding: 24px;
+  margin: -24px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 48%, black 68%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 48%, black 68%, black 100%);
 }
 .blob-frame-shadow, .blob-frame-source { position: absolute; inset: 0; }
 .blob-frame-shadow { filter: drop-shadow(0 24px 18px rgb(0 0 0 / 25%)); }
