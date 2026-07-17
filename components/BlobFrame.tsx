@@ -39,17 +39,17 @@ const coordinate = (value: number) => value.toFixed(4);
 
 function createBlobPath(seed: number) {
   const random = createRandom(seed);
-  const pointCount = 8;
-  const phase = (random() - 0.5) * 0.22;
+  const pointCount = 10;
+  const phase = (random() - 0.5) * 0.16;
   const points: Point[] = [];
 
   for (let index = 0; index < pointCount; index += 1) {
     const angle = -Math.PI / 2
       + phase
       + (index / pointCount) * Math.PI * 2
-      + (random() - 0.5) * 0.16;
-    const xRadius = 0.42 + random() * 0.055;
-    const yRadius = 0.41 + random() * 0.065;
+      + (random() - 0.5) * 0.1;
+    const xRadius = 0.43 + random() * 0.04;
+    const yRadius = 0.42 + random() * 0.045;
 
     points.push({
       x: 0.5 + Math.cos(angle) * xRadius,
@@ -59,7 +59,7 @@ function createBlobPath(seed: number) {
 
   const first = points[0];
   let path = `M ${coordinate(first.x)} ${coordinate(first.y)}`;
-  const smoothing = 0.9 / 6;
+  const smoothing = 1 / 6;
 
   for (let index = 0; index < pointCount; index += 1) {
     const previous = points[(index - 1 + pointCount) % pointCount];
@@ -83,7 +83,7 @@ function createBlobPath(seed: number) {
 
 export function BlobFrame({ children, className = '', preClipped = false, seed }: BlobFrameProps) {
   const hashedSeed = hashSeed(seed);
-  const frameClassName = `blob-frame${preClipped ? ' blob-frame--preclipped' : ''}${className ? ` ${className}` : ''}`;
+  const frameClassName = `blob-frame ${preClipped ? 'blob-frame--preclipped' : 'blob-frame--generated'}${className ? ` ${className}` : ''}`;
 
   if (preClipped) {
     return <div className={frameClassName}>{children}</div>;
@@ -104,6 +104,11 @@ export function BlobFrame({ children, className = '', preClipped = false, seed }
         </clipPath>
       </defs>
     </svg>
-    <div className={frameClassName} style={clipStyle}>{children}</div>
+    <div className={frameClassName}>
+      <div className="blob-frame-shadow">
+        <div className="blob-frame-source" style={clipStyle}>{children}</div>
+      </div>
+      <div className="blob-frame-progressive-blur" aria-hidden="true" />
+    </div>
   </>;
 }

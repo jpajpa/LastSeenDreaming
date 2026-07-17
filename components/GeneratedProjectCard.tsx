@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 type GeneratedProjectCardProps = {
   src: string;
   alt: string;
@@ -48,10 +50,10 @@ export function GeneratedProjectCard({ src, alt, seed = 42 }: GeneratedProjectCa
       </svg>
       <div className="generated-card-inner" style={{ clipPath: `url(#${clipId})` }}>
         <div className="generated-card-sharp">
-          <img src={src} alt={alt} />
+          <Image src={src} alt={alt} fill sizes="(max-width: 700px) 50vw, 387px" />
         </div>
         <div className="generated-card-blurred">
-          <img src={src} alt="" />
+          <Image src={src} alt="" fill sizes="(max-width: 700px) 50vw, 387px" />
         </div>
       </div>
     </div>
