@@ -3,7 +3,7 @@
 :root {
   --ink: #231f20;
   --dream-copy: #353535;
-  --muted: #aaa7a4;
+  --muted: #807d7a;
   --paper: #fdfdfc;
   --line: #e5e3e1;
   --blue: #48d3e4;
@@ -175,7 +175,7 @@ img { max-width: 100%; height: auto; }
 .intro .atmosphere--wander { top: 220px; left: 50%; z-index: 0; width: 650px; height: 550px; translate: -50% 0; animation: cloud-fade-in 2.5s ease both, cloud-float-wander 75s ease-in-out infinite; }
 .client-strip { margin-top: 96px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 20px; color: #b6b5b4; }
 .client-logo { flex: 1 1 0; min-width: 0; height: 64px; display: grid; place-items: center; }
-.client-logo img { display: block; width: auto; height: 30px; max-width: 145px; object-fit: contain; transform: scale(var(--client-logo-scale, 1)); filter: grayscale(1); opacity: .52; transition: opacity .2s ease, filter .2s ease, transform .2s ease; }
+.client-logo img { display: block; width: auto; height: 30px; max-width: 145px; object-fit: contain; transform: scale(var(--client-logo-scale, 1)); filter: grayscale(1); opacity: .72; transition: opacity .2s ease, filter .2s ease, transform .2s ease; }
 .client-logo--uber-eats { --client-logo-scale: .82; }
 .client-logo--apple-music { --client-logo-scale: .85; }
 .client-logo--roc-nation { --client-logo-scale: .9; }
