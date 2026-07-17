@@ -118,6 +118,16 @@ export const fallbackProjects: Project[] = [
       image('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1800&q=85', 'Stars in the night sky'),
     ],
   },
+  {
+    id: 'cms-test',
+    title: 'CMS Test', slug: 'cms-test', year: '2024', discipline: 'Test', featured: true,
+    excerpt: 'A test project for CMS-generated covers.',
+    description: 'This is a test project to validate programmatic cover generation for CMS compatibility.',
+    cover: image('/projects/test-cms-photo.jpg', 'CMS test photo'),
+    gallery: [
+      image('/projects/test-cms-photo.jpg', 'CMS test photo'),
+    ],
+  },
 ];
 
 function normalizeMedia(media: CmsMedia | undefined, fallbackAlt: string): MediaItem | null {
