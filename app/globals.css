@@ -219,13 +219,13 @@ video { max-width: 100%; }
   mask-image: radial-gradient(ellipse 100% 105% at 50% 38%, black 32%, rgba(0,0,0,0.3) 52%, transparent 68%);
 }
 .blob-frame-sharp { position: absolute; inset: 0; z-index: 1;
-  -webkit-mask-image: radial-gradient(ellipse 62% 56% at 50% 32%, black 32%, transparent 68%);
-  mask-image: radial-gradient(ellipse 62% 56% at 50% 32%, black 32%, transparent 68%);
+  -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 28%, black 42%, transparent 72%);
+  mask-image: radial-gradient(ellipse 68% 62% at 50% 28%, black 42%, transparent 72%);
 }
 .blob-frame-blurred { position: absolute; inset: -48px; z-index: 0; overflow: visible;
   filter: blur(10px);
-  -webkit-mask-image: radial-gradient(ellipse 48% 43% at 50% 37%, transparent 28%, black 62%);
-  mask-image: radial-gradient(ellipse 48% 43% at 50% 37%, transparent 28%, black 62%);
+  -webkit-mask-image: radial-gradient(ellipse 54% 50% at 50% 34%, transparent 40%, black 68%);
+  mask-image: radial-gradient(ellipse 54% 50% at 50% 34%, transparent 40%, black 68%);
 }
 .blob-frame-blurred .blob-frame-source { top: 48px; right: 48px; bottom: 48px; left: 48px; }
 .blob-frame-shadow, .blob-frame-source { position: absolute; inset: 0; }
