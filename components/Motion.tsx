@@ -1,8 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
-import { AnimatePresence, motion, MotionConfig, useReducedMotion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
+import { motion, MotionConfig, useReducedMotion } from 'framer-motion';
 
 type MotionProps = {
   children: ReactNode;
@@ -13,22 +12,8 @@ type MotionProps = {
 const easing = [0.22, 1, 0.36, 1] as const;
 
 export function MotionProvider({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  const reducedMotion = useReducedMotion();
-
   return <MotionConfig reducedMotion="user">
-    <AnimatePresence mode="sync">
-      <motion.div
-        className="route-transition"
-        key={pathname}
-        initial={false}
-        animate={{ opacity: 1, y: 0 }}
-        exit={reducedMotion ? undefined : { opacity: 0, y: -10 }}
-        transition={reducedMotion ? { duration: 0 } : { duration: 0.38, ease: easing }}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    {children}
   </MotionConfig>;
 }
 
@@ -37,10 +22,10 @@ export function Reveal({ children, className, delay = 0 }: MotionProps) {
 
   return <motion.div
     className={className}
-    initial={false}
+    initial={{ opacity: 0, y: 64 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.14 }}
-    transition={reducedMotion ? { duration: 0 } : { duration: 0.7, delay, ease: easing }}
+    viewport={{ once: true, amount: 0.15 }}
+    transition={reducedMotion ? { duration: 0 } : { duration: 1.6, delay, ease: easing }}
   >
     {children}
   </motion.div>;
