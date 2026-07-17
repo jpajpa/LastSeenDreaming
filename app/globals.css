@@ -215,21 +215,16 @@ video { max-width: 100%; }
 .blob-frame { position: absolute; inset: 0; overflow: visible; }
 .blob-frame--preclipped { overflow: visible; }
 .blob-frame--generated { isolation: isolate; }
-.blob-frame-sharp, .blob-frame-blurred { position: absolute; inset: 0; }
-.blob-frame-sharp {
-  z-index: 1;
+.blob-frame-sharp { position: absolute; inset: 0; z-index: 1;
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 70%);
   mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 70%);
 }
-.blob-frame-blurred {
-  z-index: 0;
-  filter: blur(18px);
-  box-sizing: content-box;
-  padding: 24px;
-  margin: -24px;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 48%, black 68%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 48%, black 68%, black 100%);
+.blob-frame-blurred { position: absolute; inset: -24px; z-index: 0;
+  filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 46%, black 64%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 46%, black 64%, black 100%);
 }
+.blob-frame-blurred .blob-frame-source { top: 24px; right: 24px; bottom: 24px; left: 24px; }
 .blob-frame-shadow, .blob-frame-source { position: absolute; inset: 0; }
 .blob-frame-shadow { filter: drop-shadow(0 24px 18px rgb(0 0 0 / 25%)); }
 .blob-frame-source { overflow: hidden; }
