@@ -106,9 +106,11 @@ export function BlobFrame({ children, className = '', preClipped = false, seed }
     </svg>
     <div className={frameClassName}>
       <div className="blob-frame-shadow">
-        <div className="blob-frame-source" style={clipStyle}>{children}</div>
+        <div className="blob-frame-source" style={clipStyle}>
+          {children}
+          <div className="blob-frame-blur-gradient" aria-hidden="true" />
+        </div>
       </div>
-      <div className="blob-frame-progressive-blur" aria-hidden="true" />
     </div>
   </>;
 }

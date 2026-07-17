@@ -11,6 +11,7 @@ const showcaseAssets = [
 ];
 
 const fallbackCardMedia = (project: Project, index: number): { media: MediaItem; preClipped: boolean } => {
+  if (index === 0) return { media: project.cover, preClipped: false };
   const src = project.id === project.slug ? showcaseAssets[index] : undefined;
   return src
     ? { media: { type: 'image', src, alt: '' }, preClipped: true }
