@@ -3,7 +3,7 @@ import { Atmosphere } from '@/components/Atmosphere';
 import { Footer } from '@/components/Footer';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
-import { projects } from '@/lib/projects';
+import { getProjects } from '@/lib/projects';
 import logo from './assets/SVG/logo.svg';
 import UberEatsLogo from './assets/PNG/UberEats_logo.png';
 import AppleMusicLogo from './assets/PNG/AppleMusic_logo.png';
@@ -25,7 +25,10 @@ const clients = [
   { name: 'Universal', image: UniversalLogo, size: 'universal' },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const projects = await getProjects();
+  const featuredProjects = projects.filter((project) => project.featured);
+
   return <main>
     <section className="hero">
       <Atmosphere />
@@ -41,7 +44,7 @@ export default function HomePage() {
       </div>
     </section></Reveal>
     <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><Atmosphere variant="dream-right" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don't chase them</p></section></Reveal>
-    <Reveal className="home-showcase-reveal"><ProjectShowcase projects={projects.filter((project) => project.featured)} /></Reveal>
+    <Reveal className="home-showcase-reveal"><ProjectShowcase projects={(featuredProjects.length > 0 ? featuredProjects : projects).slice(0, 3)} /></Reveal>
     <Reveal><Footer /></Reveal>
   </main>;
 }
