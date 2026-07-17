@@ -203,11 +203,12 @@ img { max-width: 100%; height: auto; }
 
 .showcase { width: min(1312px, calc(100% - 128px)); height: 645px; margin: 0 auto 0; padding: 64px 0 0; }
 .showcase h2 { margin: 0 0 64px; text-align: center; font: 48px/1.3125 var(--serif); font-weight: normal; padding-top: 60px; }
-.projects-row { height: 454px; display: flex; justify-content: center; align-items: flex-start; gap: 96px; padding-top: 60px; }
+.projects-row { height: 454px; display: flex; justify-content: center; align-items: flex-start; gap: 56px; padding-top: 60px; }
 .project-card { position: relative; overflow: visible; flex: 0 0 auto; transition: transform var(--motion-medium) var(--ease-smooth); }
 .project-card:nth-child(1) { width: 300px; height: 274px; }
 .project-card:nth-child(2) { width: 343px; height: 274px; margin-top: 12px; }
 .project-card:nth-child(3) { width: 274px; height: 280px; }
+.project-card:nth-child(4) { width: 240px; height: 260px; margin-top: 8px; }
 .project-card img, .media img, .hero-media img { object-fit: cover; transition: transform var(--motion-medium) var(--ease-smooth); }
 .project-card img.project-card-art { object-fit: contain; }
 .project-card:hover img, .project-card:focus-visible img { transform: scale(1.04); }
@@ -215,6 +216,7 @@ img { max-width: 100%; height: auto; }
 .project-card:nth-child(1) { animation: card-drift-1 14s ease-in-out infinite; }
 .project-card:nth-child(2) { animation: card-drift-2 18s ease-in-out infinite; }
 .project-card:nth-child(3) { animation: card-drift-3 16s ease-in-out infinite; }
+.project-card:nth-child(4) { animation: card-drift-1 15s ease-in-out infinite; }
 @keyframes card-drift-1 {
   0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
   25% { transform: translate(4px, -5.3px) rotate(0.53deg) scale(1.011); }
@@ -234,6 +236,13 @@ img { max-width: 100%; height: auto; }
 }
 .project-card span { position: absolute; z-index: 1; inset: 0; display: flex; align-items: center; justify-content: center; padding-bottom: 22%; color: white; font: 21px var(--sans); text-shadow: 0 1px 12px #000; opacity: 0; transition: opacity var(--motion-medium) var(--ease-smooth); }
 .project-card:hover span, .project-card:focus-visible span { opacity: 1; }
+
+.generated-card { position: absolute; inset: 0; }
+.generated-card-inner { width: 100%; height: 100%; position: relative; mask-image: radial-gradient(ellipse 90% 90% at 50% 45%, black 20%, rgba(0,0,0,0.4) 50%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 45%, black 20%, rgba(0,0,0,0.4) 50%, transparent 70%); }
+.generated-card-sharp { position: absolute; inset: 0; mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 65%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 35%, transparent 65%); }
+.generated-card-sharp img { width: 100%; height: 100%; object-fit: cover; }
+.generated-card-blurred { position: absolute; inset: 0; filter: blur(18px); mask-image: linear-gradient(to bottom, transparent 20%, black 55%, black 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 20%, black 55%, black 100%); }
+.generated-card-blurred img { width: 100%; height: 100%; object-fit: cover; }
 
 .site-footer { max-width: 1312px; margin: 0 auto; padding: 48px 96px 96px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; color: var(--muted); font-size: 12px; }
 .footer-mark { color: var(--ink); font-size: 20px; justify-self: start; }
@@ -300,8 +309,9 @@ img { max-width: 100%; height: auto; }
   .showcase { width: calc(100% - 40px); height: auto; margin: 0 auto; padding: 55px 0 80px; }
   .showcase h2 { margin-bottom: 35px; font-size: 43px; }
   .projects-row { height: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; }
-  .project-card, .project-card:nth-child(1), .project-card:nth-child(2), .project-card:nth-child(3) { width: 100%; max-width: none; height: unset; aspect-ratio: 1.41; margin: 0; overflow: visible; flex: none; display: block; }
+  .project-card, .project-card:nth-child(1), .project-card:nth-child(2), .project-card:nth-child(3), .project-card:nth-child(4) { width: 100%; max-width: none; height: unset; aspect-ratio: 1.41; margin: 0; overflow: visible; flex: none; display: block; }
   .project-card:nth-child(3) { display: none; }
+  .project-card:nth-child(4) { display: none; }
   .project-card img.project-card-art { object-fit: contain; }
   .project-card span { font: 14px var(--sans); padding-bottom: 16px; }
   .site-footer { grid-template-columns: auto 1fr auto; padding: 40px 20px 35px; align-items: start; gap: 0; }

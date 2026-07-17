@@ -53,6 +53,15 @@ export const projects: Project[] = [
       { src: 'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1800&q=85', alt: 'Bright modern interior' },
       { src: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1800&q=85', alt: 'Stars in the night sky' }
     ]
+  },
+  {
+    title: 'CMS Test', slug: 'cms-test', year: '2024', discipline: 'Test', featured: true,
+    excerpt: 'A test project for CMS-generated covers.',
+    description: 'This is a test project to validate programmatic cover generation for CMS compatibility.',
+    cover: { src: '/projects/test-cms-photo.jpg', alt: 'CMS test photo' },
+    gallery: [
+      { src: '/projects/test-cms-photo.jpg', alt: 'CMS test photo' }
+    ]
   }
 ];
 
