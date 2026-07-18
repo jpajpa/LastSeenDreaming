@@ -8,47 +8,102 @@ const HERO_PATH = 'M1446.07126 778.66648C1445.7791 926.242943 1339.74638 1037.85
 
 const WISP_PATH = 'M160 420C140 380 90 340 110 280C130 225 100 170 165 130C215 100 260 65 335 85C380 98 410 55 475 40C530 28 580 50 640 38C700 25 760 48 810 75C855 98 905 58 960 65C1015 72 1055 108 1085 160C1115 205 1140 255 1120 315C1102 365 1130 405 1100 448C1076 480 1035 500 975 510C920 518 870 530 810 520C750 512 690 525 630 515C570 508 510 522 450 515C390 508 325 520 275 505C225 492 190 465 160 420Z';
 
-function CloudLayers({ id, path, baseTransform }: { id: string; path: string; baseTransform: string }) {
+type GradientStop = { offset: string; color: string };
+
+type CloudConfig = {
+  id: string;
+  gradient: GradientStop[];
+  layerOpacities?: [number, number, number];
+};
+
+const cloudConfigs: Record<string, CloudConfig> = {
+  hero: {
+    id: 'hero',
+    gradient: [
+      { offset: '0%', color: '#1BF005' },
+      { offset: '58.4%', color: '#48D3E4' },
+    ],
+  },
+  contact: {
+    id: 'contact',
+    gradient: [
+      { offset: '0%', color: '#1BF005' },
+      { offset: '58.4%', color: '#48D3E4' },
+    ],
+  },
+  wander: {
+    id: 'wander',
+    gradient: [
+      { offset: '0%', color: '#7BCCE8' },
+      { offset: '55%', color: '#5EB8D6' },
+      { offset: '100%', color: '#94D8EC' },
+    ],
+    layerOpacities: [0.75, 0.45, 0.3],
+  },
+  dream: {
+    id: 'dream',
+    gradient: [
+      { offset: '0%', color: '#3DC9A0' },
+      { offset: '50%', color: '#58D0D8' },
+      { offset: '100%', color: '#72DDB0' },
+    ],
+    layerOpacities: [0.65, 0.4, 0.25],
+  },
+  'dream-right': {
+    id: 'dream-right',
+    gradient: [
+      { offset: '0%', color: '#14D80A' },
+      { offset: '58.4%', color: '#42C8D8' },
+    ],
+    layerOpacities: [0.85, 0.5, 0.35],
+  },
+};
+
+function CloudLayers({ config, path, baseTransform }: { config: CloudConfig; path: string; baseTransform: string }) {
+  const [o1, o2, o3] = config.layerOpacities ?? [1, 0.6, 0.4];
   return <>
     <defs>
-      <linearGradient id={`${id}-grad`} x1="100%" y1="0%" x2="12.125%" y2="85.343%">
-        <stop offset="0%" stopColor="#1BF005" />
-        <stop offset="58.4%" stopColor="#48D3E4" />
+      <linearGradient id={`${config.id}-grad`} x1="100%" y1="0%" x2="12.125%" y2="85.343%">
+        {config.gradient.map((stop, i) => <stop key={i} offset={stop.offset} stopColor={stop.color} />)}
       </linearGradient>
     </defs>
-    <g className="cloud-layer cloud-layer-1"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} /></g>
-    <g className="cloud-layer cloud-layer-2"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} opacity=".6" /></g>
-    <g className="cloud-layer cloud-layer-3"><path d={path} fill={`url(#${id}-grad)`} transform={baseTransform} opacity=".4" /></g>
+    <g className="cloud-layer cloud-layer-1"><path d={path} fill={`url(#${config.id}-grad)`} transform={baseTransform} opacity={o1} /></g>
+    <g className="cloud-layer cloud-layer-2"><path d={path} fill={`url(#${config.id}-grad)`} transform={baseTransform} opacity={o2} /></g>
+    <g className="cloud-layer cloud-layer-3"><path d={path} fill={`url(#${config.id}-grad)`} transform={baseTransform} opacity={o3} /></g>
   </>;
 }
 
 function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
+  const config = cloudConfigs[variant];
   if (variant === 'contact') {
     return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-      <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(-680 -80)" />
+      <CloudLayers config={config} path={HERO_PATH} baseTransform="translate(-680 -80)" />
     </svg>;
   }
 
   return <svg className="atmosphere-art" viewBox="-200 -200 1840 1759" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers id={variant} path={HERO_PATH} baseTransform="translate(64 43.5)" />
+    <CloudLayers config={config} path={HERO_PATH} baseTransform="translate(64 43.5)" />
   </svg>;
 }
 
 function DreamAtmosphere() {
+  const config = cloudConfigs.dream;
   return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers id="dream" path={HERO_PATH} baseTransform="rotate(8, 665, 640) translate(40 20)" />
+    <CloudLayers config={config} path={HERO_PATH} baseTransform="rotate(8, 665, 640) translate(40 20)" />
   </svg>;
 }
 
 function WanderAtmosphere() {
+  const config = cloudConfigs.wander;
   return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers id="wander" path={HERO_PATH} baseTransform="translate(1330 0) scale(-1, 1)" />
+    <CloudLayers config={config} path={HERO_PATH} baseTransform="translate(1330 0) scale(-1, 1)" />
   </svg>;
 }
 
 function DreamRightAtmosphere() {
+  const config = cloudConfigs['dream-right'];
   return <svg className="atmosphere-art" viewBox="-50 -50 1250 650" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers id="dream-right" path={WISP_PATH} baseTransform="translate(0 0)" />
+    <CloudLayers config={config} path={WISP_PATH} baseTransform="translate(0 0)" />
   </svg>;
 }
 
