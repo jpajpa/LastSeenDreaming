@@ -195,8 +195,8 @@ video { max-width: 100%; }
 .blob-frame { position: absolute; inset: 0; overflow: visible; }
 .blob-frame--preclipped { overflow: visible; }
 .blob-frame--generated { isolation: isolate; overflow: visible;
-  -webkit-mask-image: radial-gradient(ellipse 100% 105% at 50% 38%, black 32%, rgba(0,0,0,0.3) 52%, transparent 68%);
-  mask-image: radial-gradient(ellipse 100% 105% at 50% 38%, black 32%, rgba(0,0,0,0.3) 52%, transparent 68%);
+  -webkit-mask-image: radial-gradient(ellipse 115% 105% at 50% 38%, black 32%, rgba(0,0,0,0.3) 52%, transparent 68%);
+  mask-image: radial-gradient(ellipse 115% 105% at 50% 38%, black 32%, rgba(0,0,0,0.3) 52%, transparent 68%);
 }
 .blob-frame-sharp { position: absolute; inset: 0; z-index: 1;
   -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 28%, black 42%, transparent 72%);

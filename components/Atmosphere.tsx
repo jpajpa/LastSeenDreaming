@@ -32,8 +32,9 @@ const cloudConfigs: Record<string, CloudConfig> = {
   wander: {
     id: 'wander',
     gradient: [
-      { offset: '0%', color: '#6EC4E0' },
-      { offset: '45%', color: '#88D6EE' },
+      { offset: '0%', color: '#00EAFF' },
+      { offset: '20%', color: '#6EC4E0' },
+      { offset: '55%', color: '#88D6EE' },
       { offset: '100%', color: '#B0E8F6' },
     ],
     layerOpacities: [0.75, 0.45, 0.3],
@@ -41,10 +42,11 @@ const cloudConfigs: Record<string, CloudConfig> = {
   dream: {
     id: 'dream',
     gradient: [
-      { offset: '0%', color: '#5CC8B8' },
-      { offset: '50%', color: '#68D4DA' },
-      { offset: '85%', color: '#52C0E0' },
-      { offset: '100%', color: '#30A8E8' },
+      { offset: '0%', color: '#42D0E8' },
+      { offset: '35%', color: '#5ED8E0' },
+      { offset: '70%', color: '#78E0E8' },
+      { offset: '90%', color: '#B8F0F0' },
+      { offset: '100%', color: '#E8FAFA' },
     ],
     layerOpacities: [0.7, 0.45, 0.28],
   },
