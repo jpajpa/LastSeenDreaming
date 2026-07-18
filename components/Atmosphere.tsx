@@ -1,12 +1,10 @@
-export type AtmosphereVariant = 'hero' | 'dream' | 'contact' | 'wander' | 'dream-right';
+export type AtmosphereVariant = 'hero' | 'dream' | 'contact' | 'wander';
 
 type AtmosphereProps = {
   variant?: AtmosphereVariant;
 };
 
 const HERO_PATH = 'M1446.07126 778.66648C1445.7791 926.242943 1339.74638 1037.85624 1198.92162 1064.61681C1168.96999 1070.78146 1141.25675 1071.5238 1110.67078 1071.42294C894.819471 1071.66097 398.397415 1071.26963 225.233131 1071.43101C59.3496836 1080.44399-99.0105038 981.950748-116.206528 806.605106C-132.242951 667.577661-34.5052124 529.732312 102.654896 500.405832C123.620631 495.447483 146.93789 492.167468 166.9016 487.015464C208.950242 477.260143 234.942259 455.191654 253.253438 415.306996C291.657622 315.038595 352.263909 238.456501 461.484519 209.513295C531.2868 190.999164 608.466886 199.697457 671.986315 233.954045C770.051328 287.39045 771.251332 359.542709 902.088185 321.07818C985.640012 297.19015 1080.65047 316.0109 1144.27091 375.373924C1179.31346 408.16197 1207.07922 448.236248 1242.90562 480.112505C1269.93198 505.198769 1300.96644 525.935887 1330.39281 548.315029C1401.75066 600.492683 1446.63163 688.11709 1446.07126 777.859588V778.66648Z';
-
-const WISP_PATH = 'M160 420C140 380 90 340 110 280C130 225 100 170 165 130C215 100 260 65 335 85C380 98 410 55 475 40C530 28 580 50 640 38C700 25 760 48 810 75C855 98 905 58 960 65C1015 72 1055 108 1085 160C1115 205 1140 255 1120 315C1102 365 1130 405 1100 448C1076 480 1035 500 975 510C920 518 870 530 810 520C750 512 690 525 630 515C570 508 510 522 450 515C390 508 325 520 275 505C225 492 190 465 160 420Z';
 
 type GradientStop = { offset: string; color: string };
 
@@ -34,28 +32,21 @@ const cloudConfigs: Record<string, CloudConfig> = {
   wander: {
     id: 'wander',
     gradient: [
-      { offset: '0%', color: '#7BCCE8' },
-      { offset: '55%', color: '#5EB8D6' },
-      { offset: '100%', color: '#94D8EC' },
+      { offset: '0%', color: '#6EC4E0' },
+      { offset: '45%', color: '#88D6EE' },
+      { offset: '100%', color: '#B0E8F6' },
     ],
     layerOpacities: [0.75, 0.45, 0.3],
   },
   dream: {
     id: 'dream',
     gradient: [
-      { offset: '0%', color: '#3DC9A0' },
-      { offset: '50%', color: '#58D0D8' },
-      { offset: '100%', color: '#72DDB0' },
+      { offset: '0%', color: '#5CC8B8' },
+      { offset: '50%', color: '#68D4DA' },
+      { offset: '85%', color: '#52C0E0' },
+      { offset: '100%', color: '#30A8E8' },
     ],
-    layerOpacities: [0.65, 0.4, 0.25],
-  },
-  'dream-right': {
-    id: 'dream-right',
-    gradient: [
-      { offset: '0%', color: '#14D80A' },
-      { offset: '58.4%', color: '#42C8D8' },
-    ],
-    layerOpacities: [0.85, 0.5, 0.35],
+    layerOpacities: [0.7, 0.45, 0.28],
   },
 };
 
@@ -100,19 +91,11 @@ function WanderAtmosphere() {
   </svg>;
 }
 
-function DreamRightAtmosphere() {
-  const config = cloudConfigs['dream-right'];
-  return <svg className="atmosphere-art" viewBox="-50 -50 1250 650" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers config={config} path={WISP_PATH} baseTransform="translate(0 0)" />
-  </svg>;
-}
-
 export function Atmosphere({ variant = 'hero' }: AtmosphereProps) {
   let content;
   switch (variant) {
     case 'dream': content = <DreamAtmosphere />; break;
     case 'wander': content = <WanderAtmosphere />; break;
-    case 'dream-right': content = <DreamRightAtmosphere />; break;
     default: content = <HeroAtmosphere variant={variant as 'hero' | 'contact'} />;
   }
   return <div className={`atmosphere atmosphere--${variant}`} aria-hidden="true">
