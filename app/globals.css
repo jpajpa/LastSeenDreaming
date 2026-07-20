@@ -195,19 +195,19 @@ video { max-width: 100%; }
 .blob-frame { position: absolute; inset: 0; overflow: visible; }
 .blob-frame--preclipped { overflow: visible; }
 .blob-frame--generated { isolation: isolate; overflow: visible;
-  -webkit-mask-image: radial-gradient(ellipse 140% 115% at 50% 38%, black 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
-  mask-image: radial-gradient(ellipse 140% 115% at 50% 38%, black 30%, rgba(0,0,0,0.3) 50%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse 160% 120% at 50% 38%, black 28%, rgba(0,0,0,0.3) 48%, transparent 62%);
+  mask-image: radial-gradient(ellipse 160% 120% at 50% 38%, black 28%, rgba(0,0,0,0.3) 48%, transparent 62%);
 }
 .blob-frame-sharp { position: absolute; inset: 0; z-index: 1;
-  -webkit-mask-image: radial-gradient(ellipse 68% 62% at 50% 28%, black 42%, transparent 72%);
-  mask-image: radial-gradient(ellipse 68% 62% at 50% 28%, black 42%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 40%, transparent 74%);
+  mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 40%, transparent 74%);
 }
-.blob-frame-blurred { position: absolute; inset: -48px; z-index: 0; overflow: visible;
-  filter: blur(10px);
-  -webkit-mask-image: radial-gradient(ellipse 54% 50% at 50% 34%, transparent 40%, black 68%);
-  mask-image: radial-gradient(ellipse 54% 50% at 50% 34%, transparent 40%, black 68%);
+.blob-frame-blurred { position: absolute; inset: -72px; z-index: 0; overflow: visible;
+  filter: blur(12px);
+  -webkit-mask-image: radial-gradient(ellipse 50% 46% at 50% 32%, transparent 36%, black 64%);
+  mask-image: radial-gradient(ellipse 50% 46% at 50% 32%, transparent 36%, black 64%);
 }
-.blob-frame-blurred .blob-frame-source { top: 48px; right: 48px; bottom: 48px; left: 48px; }
+.blob-frame-blurred .blob-frame-source { top: 72px; right: 72px; bottom: 72px; left: 72px; }
 .blob-frame-shadow, .blob-frame-source { position: absolute; inset: 0; }
 .blob-frame-shadow { filter: drop-shadow(0 24px 18px rgb(0 0 0 / 25%)); }
 .blob-frame-source { overflow: hidden; }
