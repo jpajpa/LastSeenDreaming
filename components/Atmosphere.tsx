@@ -66,11 +66,36 @@ function CloudLayers({ config, path, baseTransform }: { config: CloudConfig; pat
   </>;
 }
 
+const USE_VIDEO_HERO = true;
+
 function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
   const config = cloudConfigs[variant];
   if (variant === 'contact') {
     return <svg className="atmosphere-art" viewBox="-200 -200 1840 1480" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
       <CloudLayers config={config} path={HERO_PATH} baseTransform="translate(-680 -80)" />
+    </svg>;
+  }
+
+  if (USE_VIDEO_HERO) {
+    return <svg className="atmosphere-art" viewBox="-200 -200 1840 1759" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
+      <defs>
+        <clipPath id="hero-video-clip">
+          <path d={HERO_PATH} transform="translate(64 43.5)" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#hero-video-clip)">
+        <foreignObject x="-100" y="200" width="1700" height="1000">
+          <video
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            src="/atmosphere/hero-reel.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
+        </foreignObject>
+      </g>
     </svg>;
   }
 
