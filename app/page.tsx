@@ -3,7 +3,6 @@ import { Atmosphere } from '@/components/Atmosphere';
 import { Footer } from '@/components/Footer';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
-import { ScrollFadeReel } from '@/components/ScrollFadeReel';
 import { getProjects } from '@/lib/projects';
 import logo from './assets/SVG/logo.svg';
 import UberEatsLogo from './assets/PNG/UberEats_logo.png';
@@ -44,7 +43,7 @@ export default async function HomePage() {
     </Reveal>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
       <Atmosphere variant="wander" />
-      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.<ScrollFadeReel /></p>
+      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
       <div className="client-strip" aria-label="Selected clients">
         {clients.map((client) => <span className={`client-logo client-logo--${client.size}`} key={client.name}>
           <Image src={client.image} alt={client.name} sizes="(max-width: 700px) 120px, 150px" />
