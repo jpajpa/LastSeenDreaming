@@ -200,7 +200,11 @@ video { max-width: 100%; }
   mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%);
 }
 .blob-frame-blurred { position: absolute; inset: -80px; z-index: 0; overflow: visible;
-  filter: blur(18px);
+  filter: blur(14px);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .blob-frame-blurred .blob-frame-source { top: 80px; right: 80px; bottom: 80px; left: 80px; }
 .blob-frame-shadow, .blob-frame-source { position: absolute; inset: 0; }
