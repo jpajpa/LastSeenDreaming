@@ -53,8 +53,6 @@ video { max-width: 100%; }
 .atmosphere--dream { --cloud-blur: 42px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); }
 .atmosphere--wander { --cloud-blur: 32px; -webkit-mask-image: radial-gradient(ellipse 110% 100% at 58% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); mask-image: radial-gradient(ellipse 110% 100% at 58% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
-.atmosphere-video-cloud { position: absolute; inset: 100px; clip-path: url(#hero-cloud-clip); }
-.atmosphere-video-cloud video { width: 100%; height: 100%; object-fit: cover; }
 @keyframes cloud-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 .cloud-layer { transform-origin: center; }
@@ -159,6 +157,8 @@ video { max-width: 100%; }
 .intro p { margin: 0 auto 24px; max-width: 1216px; }
 .intro p:last-of-type { margin-bottom: 0; }
 .intro .muted, .muted { color: var(--muted); }
+.inline-reel { display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -0.15em; margin-left: 0.2em; border-radius: 4px; overflow: hidden; }
+.inline-reel video { width: 100%; height: 100%; object-fit: cover; }
 .intro .atmosphere--wander { top: 220px; left: 50%; z-index: 0; width: 650px; height: 550px; translate: -50% 0; animation: cloud-fade-in 2.5s ease both, cloud-float-wander 75s ease-in-out infinite; }
 .client-strip { margin-top: 96px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 20px; color: #b6b5b4; }
 .client-logo { flex: 1 1 0; min-width: 0; height: 64px; display: grid; place-items: center; }

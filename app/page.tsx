@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Atmosphere } from '@/components/Atmosphere';
-import { BlobFrame } from '@/components/BlobFrame';
 import { Footer } from '@/components/Footer';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
@@ -37,12 +36,7 @@ export default async function HomePage() {
     </section>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
       <Atmosphere variant="wander" />
-      <div className="video-feature" aria-hidden="true">
-        <BlobFrame seed="hero-reel">
-          <video className="video-feature-src" src="/atmosphere/hero-reel.mp4" autoPlay muted loop playsInline preload="auto" />
-        </BlobFrame>
-      </div>
-      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
+      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.<span className="inline-reel"><video autoPlay muted loop playsInline src="/atmosphere/hero-reel.mp4" /></span></p>
       <div className="client-strip" aria-label="Selected clients">
         {clients.map((client) => <span className={`client-logo client-logo--${client.size}`} key={client.name}>
           <Image src={client.image} alt={client.name} sizes="(max-width: 700px) 120px, 150px" />
