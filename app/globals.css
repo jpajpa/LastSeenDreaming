@@ -153,12 +153,14 @@ video { max-width: 100%; }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-.intro { position: relative; z-index: 2; min-height: 705px; text-align: center; padding: 288px 0 0; font-family: var(--serif); font-size: 48px; line-height: 1.3125; }
+.home-video-reveal { position: relative; z-index: 2; }
+.home-video { width: min(1312px, calc(100% - 128px)); aspect-ratio: 1312 / 800; margin: 64px auto 0; overflow: hidden; border-radius: 48px; background: #111; box-shadow: 0 8px 12px rgb(0 0 0 / 25%); }
+.home-video video { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+
+.intro { position: relative; z-index: 2; min-height: 565px; text-align: center; padding: 100px 0 0; font-family: var(--serif); font-size: 48px; line-height: 1.3125; }
 .intro p { margin: 0 auto 24px; max-width: 1216px; }
 .intro p:last-of-type { margin-bottom: 0; }
 .intro .muted, .muted { color: var(--muted); }
-.inline-reel { display: inline-block; width: 1.1em; height: 1.1em; vertical-align: -0.15em; margin-left: 0.2em; border-radius: 4px; overflow: hidden; }
-.inline-reel video { width: 100%; height: 100%; object-fit: cover; }
 .intro .atmosphere--wander { top: 220px; left: 50%; z-index: 0; width: 650px; height: 550px; translate: -50% 0; animation: cloud-fade-in 2.5s ease both, cloud-float-wander 75s ease-in-out infinite; }
 .client-strip { margin-top: 96px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 20px; color: #b6b5b4; }
 .client-logo { flex: 1 1 0; min-width: 0; height: 64px; display: grid; place-items: center; }
@@ -311,7 +313,8 @@ video { max-width: 100%; }
   .hero { min-height: 100svh; overflow: visible; }
   .hero h1 { top: 50%; transform: translate(-50%, -50%); }
   .hero .atmosphere { top: 62%; left: 50%; width: 900px; height: 600px; translate: -50% -50%; --cloud-blur: 30px; }
-  .intro { min-height: 0; padding: 0 0 90px; font-size: 27px; }
+  .home-video { width: calc(100% - 40px); margin-top: 32px; border-radius: 20px; }
+  .intro { min-height: 0; padding: 40px 0 90px; font-size: 27px; }
   .intro .atmosphere--wander { top: 80px; left: 50%; width: 420px; height: 360px; --cloud-blur: 20px; }
   .client-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 16px; padding: 16px 0; overflow: hidden; justify-content: center; }
   .client-logo { flex: none; width: 100%; height: 48px; }

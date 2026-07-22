@@ -34,9 +34,16 @@ export default async function HomePage() {
       <Atmosphere />
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
     </section>
+    <Reveal className="home-video-reveal">
+      <section className="home-video" aria-label="2025 highlight reel">
+        <video autoPlay loop muted playsInline preload="metadata">
+          <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
+        </video>
+      </section>
+    </Reveal>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
       <Atmosphere variant="wander" />
-      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.<span className="inline-reel"><video autoPlay muted loop playsInline src="/atmosphere/hero-reel.mp4" /></span></p>
+      <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
       <div className="client-strip" aria-label="Selected clients">
         {clients.map((client) => <span className={`client-logo client-logo--${client.size}`} key={client.name}>
           <Image src={client.image} alt={client.name} sizes="(max-width: 700px) 120px, 150px" />
