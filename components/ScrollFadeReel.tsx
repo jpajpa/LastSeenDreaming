@@ -1,26 +1,19 @@
 'use client';
 
-import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import { useEffect, useState, type ReactNode } from 'react';
 
-export function ScrollFadeReel() {
+export function ScrollFadeSection({ children, className }: { children: ReactNode; className?: string }) {
   const [isMobile, setIsMobile] = useState(false);
-  const [opacity, setOpacity] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
+  const [opacity, setOpacity] = useState(1);
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, 'change', () => {
-    if (!isMobile || !ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const viewH = window.innerHeight;
-    const distFromBottom = viewH - rect.top;
-    if (distFromBottom < 0) {
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    if (!isMobile) return;
+    if (y < 60) {
       setOpacity(0);
-    } else if (distFromBottom < 200) {
-      setOpacity(distFromBottom / 200);
-    } else if (rect.top > viewH * 0.55) {
-      const fade = (rect.top - viewH * 0.55) / (viewH * 0.2);
-      setOpacity(Math.max(0, Math.min(1, 1 - fade)));
+    } else if (y < 260) {
+      setOpacity((y - 60) / 200);
     } else {
       setOpacity(1);
     }
@@ -28,19 +21,20 @@ export function ScrollFadeReel() {
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 700px)');
-    setIsMobile(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    const update = (matches: boolean) => {
+      setIsMobile(matches);
+      if (!matches) setOpacity(1);
+      else setOpacity(window.scrollY < 60 ? 0 : Math.min(1, (window.scrollY - 60) / 200));
+    };
+    update(mq.matches);
+    const handler = (e: MediaQueryListEvent) => update(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
   }, []);
 
   return (
-    <motion.span
-      ref={ref}
-      className="inline-reel"
-      style={isMobile ? { opacity } : undefined}
-    >
-      <video autoPlay muted loop playsInline src="/atmosphere/hero-reel.mp4" />
-    </motion.span>
+    <div className={className} style={isMobile ? { opacity, transition: 'opacity 0.15s ease-out' } : undefined}>
+      {children}
+    </div>
   );
 }
