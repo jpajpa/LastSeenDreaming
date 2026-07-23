@@ -54,7 +54,6 @@ export default async function HomePage() {
     <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don&apos;t chase them</p></section></Reveal>
     <Reveal className="home-showcase-reveal">
       <ProjectShowcase projects={(featuredProjects.length > 0 ? featuredProjects : projects).slice(0, 3)} />
-      <div className="view-all-wrap"><a href="/projects" className="view-all-btn"><span>View all projects</span></a></div>
     </Reveal>
     <Reveal><Footer /></Reveal>
   </main>;
