@@ -1,10 +1,8 @@
 import Image from 'next/image';
 import { Atmosphere } from '@/components/Atmosphere';
-import { BlobFrame } from '@/components/BlobFrame';
 import { Footer } from '@/components/Footer';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
-import { ScrollFadeSection } from '@/components/ScrollFadeReel';
 import { getProjects } from '@/lib/projects';
 import logo from './assets/SVG/logo.svg';
 import UberEatsLogo from './assets/PNG/UberEats_logo.png';
@@ -36,16 +34,7 @@ export default async function HomePage() {
       <Atmosphere />
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
     </section>
-    <ScrollFadeSection className="home-video-reveal">
-      <section className="home-video" aria-label="2025 highlight reel">
-        <BlobFrame seed="hero-reel">
-          <video autoPlay loop muted playsInline preload="metadata">
-            <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
-          </video>
-        </BlobFrame>
-      </section>
-    </ScrollFadeSection>
-    <Reveal className="home-intro-reveal"><section className="intro content-width">
+<Reveal className="home-intro-reveal"><section className="intro content-width">
       <Atmosphere variant="wander" />
       <p className="muted">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
       <div className="client-strip" aria-label="Selected clients">

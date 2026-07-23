@@ -6,6 +6,8 @@ type AtmosphereProps = {
 
 const HERO_PATH = 'M1446.07126 778.66648C1445.7791 926.242943 1339.74638 1037.85624 1198.92162 1064.61681C1168.96999 1070.78146 1141.25675 1071.5238 1110.67078 1071.42294C894.819471 1071.66097 398.397415 1071.26963 225.233131 1071.43101C59.3496836 1080.44399-99.0105038 981.950748-116.206528 806.605106C-132.242951 667.577661-34.5052124 529.732312 102.654896 500.405832C123.620631 495.447483 146.93789 492.167468 166.9016 487.015464C208.950242 477.260143 234.942259 455.191654 253.253438 415.306996C291.657622 315.038595 352.263909 238.456501 461.484519 209.513295C531.2868 190.999164 608.466886 199.697457 671.986315 233.954045C770.051328 287.39045 771.251332 359.542709 902.088185 321.07818C985.640012 297.19015 1080.65047 316.0109 1144.27091 375.373924C1179.31346 408.16197 1207.07922 448.236248 1242.90562 480.112505C1269.93198 505.198769 1300.96644 525.935887 1330.39281 548.315029C1401.75066 600.492683 1446.63163 688.11709 1446.07126 777.859588V778.66648Z';
 
+const HERO_CLIP_NORM = 'M0.929387 0.581107C0.929228 0.665005 0.871601 0.728457 0.795066 0.743671C0.778788 0.747175 0.763726 0.747597 0.747104 0.747540C0.629793 0.747675 0.359999 0.747453 0.265888 0.747545C0.175734 0.752669 0.089668 0.696675 0.080323 0.596990C0.071607 0.517952 0.124725 0.439586 0.199269 0.422914C0.210663 0.420095 0.223336 0.418231 0.234186 0.415302C0.257038 0.409756 0.271164 0.397210 0.281116 0.374535C0.301988 0.317532 0.334926 0.273995 0.394285 0.257540C0.432221 0.247015 0.474167 0.251960 0.508688 0.271435C0.561984 0.301814 0.562637 0.342833 0.633744 0.320965C0.679152 0.307385 0.730788 0.318085 0.765365 0.351833C0.784409 0.370473 0.799500 0.393255 0.818970 0.411377C0.833659 0.425639 0.850525 0.437428 0.866518 0.450151C0.905299 0.479814 0.929691 0.529629 0.929387 0.580648V0.581107Z';
+
 
 type GradientStop = { offset: string; color: string };
 
@@ -67,6 +69,14 @@ function CloudLayers({ config, path, baseTransform }: { config: CloudConfig; pat
   </>;
 }
 
+const heroClipStyle = { clipPath: 'url(#hero-cloud-clip)', WebkitClipPath: 'url(#hero-cloud-clip)' } as const;
+
+function HeroVideo() {
+  return <video className="hero-video-src" autoPlay muted loop playsInline preload="metadata">
+    <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
+  </video>;
+}
+
 function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
   const config = cloudConfigs[variant];
   if (variant === 'contact') {
@@ -75,9 +85,25 @@ function HeroAtmosphere({ variant }: { variant: 'hero' | 'contact' }) {
     </svg>;
   }
 
-  return <svg className="atmosphere-art" viewBox="-200 -200 1840 1759" overflow="visible" preserveAspectRatio="xMidYMid meet" focusable="false">
-    <CloudLayers config={config} path={HERO_PATH} baseTransform="translate(64 43.5)" />
-  </svg>;
+  return <>
+    <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+      <defs>
+        <clipPath id="hero-cloud-clip" clipPathUnits="objectBoundingBox">
+          <path d={HERO_CLIP_NORM} />
+        </clipPath>
+      </defs>
+    </svg>
+    <div className="hero-cloud-sharp">
+      <div className="hero-cloud-source" style={heroClipStyle}>
+        <HeroVideo />
+      </div>
+    </div>
+    <div className="hero-cloud-blurred" aria-hidden="true">
+      <div className="hero-cloud-source" style={heroClipStyle}>
+        <HeroVideo />
+      </div>
+    </div>
+  </>;
 }
 
 function DreamAtmosphere() {
@@ -96,12 +122,16 @@ function WanderAtmosphere() {
 
 export function Atmosphere({ variant = 'hero' }: AtmosphereProps) {
   let content;
+  let extraClass = '';
   switch (variant) {
     case 'dream': content = <DreamAtmosphere />; break;
     case 'wander': content = <WanderAtmosphere />; break;
-    default: content = <HeroAtmosphere variant={variant as 'hero' | 'contact'} />;
+    default:
+      content = <HeroAtmosphere variant={variant as 'hero' | 'contact'} />;
+      if (variant === 'hero') extraClass = ' atmosphere--hero-video';
+      break;
   }
-  return <div className={`atmosphere atmosphere--${variant}`} aria-hidden="true">
+  return <div className={`atmosphere atmosphere--${variant}${extraClass}`} aria-hidden="true">
     {content}
   </div>;
 }

@@ -53,6 +53,21 @@ video { max-width: 100%; }
 .atmosphere--dream { --cloud-blur: 42px; -webkit-mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); mask-image: radial-gradient(ellipse 100% 100% at 55% 48%, black 22%, rgba(0,0,0,0.3) 48%, transparent 70%); }
 .atmosphere--wander { --cloud-blur: 32px; -webkit-mask-image: radial-gradient(ellipse 110% 100% at 58% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); mask-image: radial-gradient(ellipse 110% 100% at 58% 52%, black 20%, rgba(0,0,0,0.3) 46%, transparent 70%); }
 .atmosphere-art { display: block; width: 100%; height: 100%; max-width: none; overflow: visible; }
+
+.atmosphere--hero-video { filter: none; }
+.hero-cloud-sharp { position: absolute; inset: 100px; z-index: 1;
+  -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%);
+  mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%);
+}
+.hero-cloud-blurred { position: absolute; inset: 20px; z-index: 0; overflow: visible;
+  filter: blur(14px);
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+.hero-cloud-source { position: absolute; inset: 0; overflow: hidden; }
+.hero-video-src { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 @keyframes cloud-fade-in { from { opacity: 0; } to { opacity: 1; } }
 
 .cloud-layer { transform-origin: center; }
@@ -153,12 +168,6 @@ video { max-width: 100%; }
   100% { transform: translate(0, 0) rotate(0deg); }
 }
 
-.home-video-reveal { position: relative; z-index: 2; }
-.home-video { position: relative; width: min(1400px, calc(100% - 64px)); aspect-ratio: 16 / 7; margin: 64px auto 0; overflow: visible; }
-.home-video video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
-.home-video .blob-frame--generated { isolation: isolate; overflow: visible; }
-.home-video .blob-frame-sharp { -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%); mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%); }
-.home-video .blob-frame-blurred { inset: -80px; filter: blur(14px); }
 
 .intro { position: relative; z-index: 2; min-height: 565px; text-align: center; padding: 100px 0 0; font-family: var(--serif); font-size: 48px; line-height: 1.3125; }
 .intro p { margin: 0 auto 24px; max-width: 1216px; }
@@ -320,11 +329,7 @@ video { max-width: 100%; }
   .hero { min-height: 100svh; overflow: visible; }
   .hero h1 { top: 50%; transform: translate(-50%, -50%); }
   .hero .atmosphere { top: 62%; left: 50%; width: 900px; height: 600px; translate: -50% -50%; --cloud-blur: 30px; }
-  .home-video-reveal { position: relative; }
-  .home-video { width: calc(100% - 20px); margin-top: 24px; aspect-ratio: 16 / 9; }
-  .home-intro-reveal { position: relative; z-index: 3; margin-top: -160px; }
-  .intro { min-height: 0; padding: 60px 24px 90px; font-size: 18px; }
-  .intro .muted { color: white; text-shadow: 0 1px 16px rgba(0, 0, 0, 0.6); }
+  .intro { min-height: 0; padding: 0 0 90px; font-size: 27px; }
   .intro .atmosphere--wander { top: 80px; left: 50%; width: 420px; height: 360px; --cloud-blur: 20px; }
   .client-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 16px; padding: 16px 0; overflow: hidden; justify-content: center; }
   .client-logo { flex: none; width: 100%; height: 48px; }
