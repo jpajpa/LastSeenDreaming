@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Atmosphere } from '@/components/Atmosphere';
+import { BlobFrame } from '@/components/BlobFrame';
 import { Footer } from '@/components/Footer';
 import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
@@ -37,9 +38,11 @@ export default async function HomePage() {
     </section>
     <ScrollFadeSection className="home-video-reveal">
       <section className="home-video" aria-label="2025 highlight reel">
-        <video autoPlay loop muted playsInline preload="metadata">
-          <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
-        </video>
+        <BlobFrame seed="hero-reel">
+          <video autoPlay loop muted playsInline preload="metadata">
+            <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
+          </video>
+        </BlobFrame>
       </section>
     </ScrollFadeSection>
     <Reveal className="home-intro-reveal"><section className="intro content-width">

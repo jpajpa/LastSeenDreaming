@@ -154,10 +154,11 @@ video { max-width: 100%; }
 }
 
 .home-video-reveal { position: relative; z-index: 2; }
-.home-video { width: 100%; aspect-ratio: 16 / 7; margin: 64px auto 0; position: relative; overflow: visible; }
-.home-video video { display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; border-radius: 24px; }
-.home-video::after { content: ''; position: absolute; left: 0; right: 0; bottom: -40px; height: 120px; background: linear-gradient(to bottom, var(--bg), transparent); pointer-events: none; }
-.home-video { -webkit-mask-image: radial-gradient(ellipse 120% 100% at 50% 30%, black 40%, rgba(0,0,0,0.4) 65%, transparent 85%); mask-image: radial-gradient(ellipse 120% 100% at 50% 30%, black 40%, rgba(0,0,0,0.4) 65%, transparent 85%); }
+.home-video { position: relative; width: min(1400px, calc(100% - 64px)); aspect-ratio: 16 / 7; margin: 64px auto 0; overflow: visible; }
+.home-video video { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; }
+.home-video .blob-frame--generated { isolation: isolate; overflow: visible; }
+.home-video .blob-frame-sharp { -webkit-mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%); mask-image: radial-gradient(ellipse 72% 64% at 50% 28%, black 38%, transparent 72%); }
+.home-video .blob-frame-blurred { inset: -80px; filter: blur(14px); }
 
 .intro { position: relative; z-index: 2; min-height: 565px; text-align: center; padding: 100px 0 0; font-family: var(--serif); font-size: 48px; line-height: 1.3125; }
 .intro p { margin: 0 auto 24px; max-width: 1216px; }
@@ -320,8 +321,7 @@ video { max-width: 100%; }
   .hero h1 { top: 50%; transform: translate(-50%, -50%); }
   .hero .atmosphere { top: 62%; left: 50%; width: 900px; height: 600px; translate: -50% -50%; --cloud-blur: 30px; }
   .home-video-reveal { position: relative; }
-  .home-video { width: 100%; margin-top: 32px; aspect-ratio: 16 / 9; }
-  .home-video video { border-radius: 16px; }
+  .home-video { width: calc(100% - 20px); margin-top: 24px; aspect-ratio: 16 / 9; }
   .home-intro-reveal { position: relative; z-index: 3; margin-top: -160px; }
   .intro { min-height: 0; padding: 60px 24px 90px; font-size: 18px; }
   .intro .muted { color: white; text-shadow: 0 1px 16px rgba(0, 0, 0, 0.6); }
