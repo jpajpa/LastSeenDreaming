@@ -5,6 +5,7 @@ import { ProjectShowcase } from '@/components/ProjectShowcase';
 import { Reveal } from '@/components/Motion';
 import { ScrollFadeSection } from '@/components/ScrollFadeReel';
 import { getProjects } from '@/lib/projects';
+import { getHomePageContent } from '@/lib/siteContent';
 import logo from './assets/SVG/logo.svg';
 import UberEatsLogo from './assets/PNG/UberEats_logo.png';
 import AppleMusicLogo from './assets/PNG/AppleMusic_logo.png';
@@ -27,12 +28,24 @@ const clients = [
 ];
 
 export default async function HomePage() {
-  const projects = await getProjects();
+  const [projects, homePage] = await Promise.all([
+    getProjects(),
+    getHomePageContent(),
+  ]);
   const featuredSlugs = ['soccer-aid', 'apple-music-playlist', 'jungle'];
-  const featuredProjects = featuredSlugs.flatMap((slug) => {
-    const p = projects.find((project) => project.slug === slug);
-    return p ? [p] : [];
+  const defaultFeaturedProjects = featuredSlugs.flatMap((slug) => {
+    const project = projects.find((item) => item.slug === slug);
+    return project ? [project] : [];
   });
+  const selectedProjects = homePage.featuredProjectIds.flatMap((id) => {
+    const project = projects.find((item) => item.id === id);
+    return project ? [project] : [];
+  });
+  const featuredProjects = selectedProjects.length > 0
+    ? selectedProjects
+    : defaultFeaturedProjects.length > 0
+      ? defaultFeaturedProjects
+      : projects;
 
   return <main>
     <section className="hero">
@@ -40,11 +53,11 @@ export default async function HomePage() {
       <h1><Image src={logo} alt="Last Seen Dreaming" priority /></h1>
     </section>
     <ScrollFadeSection className="home-video-reveal">
-      <section className="home-video" aria-label="2025 highlight reel">
+      <section className="home-video" aria-label={homePage.mainVideoLabel}>
         <video autoPlay loop muted playsInline preload="metadata">
-          <source src="/videos/2025-highlight-reel.web.mp4" type="video/mp4" />
+          <source src={homePage.mainVideoUrl} type={homePage.mainVideoMimeType} />
         </video>
-        <p className="home-video-text">Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.</p>
+        <p className="home-video-text">{homePage.intro}</p>
       </section>
     </ScrollFadeSection>
     <Reveal className="home-intro-reveal"><section className="intro content-width">
@@ -57,7 +70,7 @@ export default async function HomePage() {
     </section></Reveal>
     <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don&apos;t chase them</p></section></Reveal>
     <Reveal className="home-showcase-reveal">
-      <ProjectShowcase projects={(featuredProjects.length > 0 ? featuredProjects : projects).slice(0, 3)} />
+      <ProjectShowcase projects={featuredProjects.slice(0, 3)} />
     </Reveal>
     <Reveal><Footer /></Reveal>
   </main>;

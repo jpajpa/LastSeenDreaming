@@ -120,13 +120,6 @@ const project = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'featured',
-      title: 'Show on homepage',
-      type: 'boolean',
-      group: 'settings',
-      initialValue: false,
-    }),
-    defineField({
       name: 'projectType',
       title: 'Project type',
       type: 'string',
@@ -158,13 +151,96 @@ const project = defineType({
       title: 'title',
       media: 'mainMedia.image',
       mediaType: 'mainMedia.mediaType',
-      featured: 'featured',
     },
-    prepare({ title, media, mediaType, featured }) {
-      const labels = [mediaType === 'video' ? 'Video' : 'Image', featured ? 'Homepage' : null].filter(Boolean);
-      return { title, subtitle: labels.join(' · '), media };
+    prepare({ title, media, mediaType }) {
+      return { title, subtitle: mediaType === 'video' ? 'Video' : 'Image', media };
     },
   },
 });
 
-export const schemaTypes = [projectMedia, project];
+const homePage = defineType({
+  name: 'homePage',
+  title: 'Home page',
+  type: 'document',
+  groups: [
+    { name: 'content', title: 'Content', default: true },
+    { name: 'projects', title: 'Featured projects' },
+    { name: 'video', title: 'Main video' },
+  ],
+  fields: [
+    defineField({
+      name: 'intro',
+      title: 'Home page info',
+      type: 'text',
+      rows: 4,
+      group: 'content',
+      description: 'The short production-house introduction shown over the main video.',
+      initialValue: 'Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.',
+      validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'featuredProjects',
+      title: 'Featured projects on home',
+      type: 'array',
+      group: 'projects',
+      description: 'Choose up to three projects and drag them into the order they should appear.',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'project' }],
+        }),
+      ],
+      validation: (Rule) => Rule.required().min(1).max(3).unique(),
+    }),
+    defineField({
+      name: 'mainVideo',
+      title: 'Main video on home',
+      type: 'file',
+      group: 'video',
+      description: 'Upload the looping reel shown near the top of the home page.',
+      options: { accept: 'video/mp4,video/webm' },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'mainVideoLabel',
+      title: 'Video description',
+      type: 'string',
+      group: 'video',
+      description: 'A short accessible label, for example “2025 highlight reel”.',
+      initialValue: '2025 highlight reel',
+      validation: (Rule) => Rule.required().max(120),
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Home page',
+        subtitle: 'Intro, main video and featured projects',
+      };
+    },
+  },
+});
+
+const siteSettings = defineType({
+  name: 'siteSettings',
+  title: 'Site settings',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'contactEmail',
+      title: 'Contact email',
+      type: 'string',
+      description: 'Shown as the main link on the Contact page.',
+      initialValue: 'inbox@lastseendreaming.com',
+      validation: (Rule) => Rule.required().email(),
+    }),
+  ],
+  preview: {
+    select: { subtitle: 'contactEmail' },
+    prepare({ subtitle }) {
+      return { title: 'Site settings', subtitle };
+    },
+  },
+});
+
+export const schemaTypes = [projectMedia, project, homePage, siteSettings];
