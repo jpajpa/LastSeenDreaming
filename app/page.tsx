@@ -28,7 +28,11 @@ const clients = [
 
 export default async function HomePage() {
   const projects = await getProjects();
-  const featuredProjects = projects.filter((project) => project.featured);
+  const featuredSlugs = ['soccer-aid', 'apple-music', 'jungle'];
+  const featuredProjects = featuredSlugs.flatMap((slug) => {
+    const p = projects.find((project) => project.slug === slug);
+    return p ? [p] : [];
+  });
 
   return <main>
     <section className="hero">
