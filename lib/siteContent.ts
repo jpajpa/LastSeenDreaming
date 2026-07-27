@@ -5,14 +5,32 @@ const defaultContactEmail = 'inbox@lastseendreaming.com';
 
 export type HomePageContent = {
   intro: string;
+  clientLogos: ClientLogo[] | null;
   featuredProjectIds: string[];
   mainVideoUrl: string;
   mainVideoMimeType: string;
   mainVideoLabel: string;
 };
 
+export type ClientLogo = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  width: number;
+  height: number;
+  displayScale: number;
+};
+
 type CmsHomePage = {
   intro?: string;
+  clientLogos?: Array<{
+    id?: string;
+    name?: string;
+    imageUrl?: string;
+    width?: number;
+    height?: number;
+    displayScale?: number;
+  }> | null;
   featuredProjectIds?: string[];
   mainVideoUrl?: string;
   mainVideoMimeType?: string;
@@ -25,6 +43,7 @@ type CmsSiteSettings = {
 
 const fallbackHomePage: HomePageContent = {
   intro: 'Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.',
+  clientLogos: null,
   featuredProjectIds: [],
   mainVideoUrl: '/videos/2025-highlight-reel.web.mp4',
   mainVideoMimeType: 'video/mp4',
@@ -33,6 +52,14 @@ const fallbackHomePage: HomePageContent = {
 
 const homePageQuery = `*[_type == "homePage" && _id == "homePage"][0] {
   intro,
+  "clientLogos": clientLogos[] {
+    "id": _key,
+    name,
+    "imageUrl": logo.asset->url,
+    "width": logo.asset->metadata.dimensions.width,
+    "height": logo.asset->metadata.dimensions.height,
+    displayScale
+  },
   "featuredProjectIds": featuredProjects[]._ref,
   "mainVideoUrl": mainVideo.asset->url,
   "mainVideoMimeType": mainVideo.asset->mimeType,
@@ -54,8 +81,24 @@ export const getHomePageContent = cache(async (): Promise<HomePageContent> => {
 
     if (!content) return fallbackHomePage;
 
+    const clientLogos = content.clientLogos === null || content.clientLogos === undefined
+      ? null
+      : content.clientLogos.flatMap((logo) => {
+        if (!logo.id || !logo.name || !logo.imageUrl || !logo.width || !logo.height) return [];
+
+        return [{
+          id: logo.id,
+          name: logo.name,
+          imageUrl: logo.imageUrl,
+          width: logo.width,
+          height: logo.height,
+          displayScale: logo.displayScale ?? 1,
+        }];
+      });
+
     return {
       intro: content.intro || fallbackHomePage.intro,
+      clientLogos,
       featuredProjectIds: content.featuredProjectIds || [],
       mainVideoUrl: content.mainVideoUrl || fallbackHomePage.mainVideoUrl,
       mainVideoMimeType: content.mainVideoMimeType || fallbackHomePage.mainVideoMimeType,

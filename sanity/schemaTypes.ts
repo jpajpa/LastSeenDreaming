@@ -71,6 +71,50 @@ const projectMedia = defineType({
   },
 });
 
+const clientLogo = defineType({
+  name: 'clientLogo',
+  title: 'Client logo',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'name',
+      title: 'Client name',
+      type: 'string',
+      description: 'Used as the logo’s accessible description.',
+      validation: (Rule) => Rule.required().max(80),
+    }),
+    defineField({
+      name: 'logo',
+      title: 'Logo image',
+      type: 'image',
+      description: 'Upload a transparent PNG or WebP. The site displays it in grey automatically.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'displayScale',
+      title: 'Visual size',
+      type: 'number',
+      description: 'Use 1 for the standard size, a smaller number to reduce it, or a larger number to enlarge it.',
+      initialValue: 1,
+      validation: (Rule) => Rule.required().min(0.5).max(2),
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      media: 'logo',
+      displayScale: 'displayScale',
+    },
+    prepare({ title, media, displayScale }) {
+      return {
+        title: title || 'Untitled client',
+        subtitle: `Visual size: ${displayScale ?? 1}`,
+        media,
+      };
+    },
+  },
+});
+
 const project = defineType({
   name: 'project',
   title: 'Project',
@@ -164,6 +208,7 @@ const homePage = defineType({
   type: 'document',
   groups: [
     { name: 'content', title: 'Content', default: true },
+    { name: 'clients', title: 'Client logos' },
     { name: 'projects', title: 'Featured projects' },
     { name: 'video', title: 'Main video' },
   ],
@@ -177,6 +222,15 @@ const homePage = defineType({
       description: 'The short production-house introduction shown over the main video.',
       initialValue: 'Last Seen Dreaming is a London production house that chases dreams and turns them into visuals.',
       validation: (Rule) => Rule.required().max(300),
+    }),
+    defineField({
+      name: 'clientLogos',
+      title: 'Client logos',
+      type: 'array',
+      group: 'clients',
+      description: 'Add, remove and drag logos into the order they should appear. The first six are shown on phones.',
+      of: [defineArrayMember({ type: 'clientLogo' })],
+      validation: (Rule) => Rule.max(12),
     }),
     defineField({
       name: 'featuredProjects',
@@ -215,7 +269,7 @@ const homePage = defineType({
     prepare() {
       return {
         title: 'Home page',
-        subtitle: 'Intro, main video and featured projects',
+        subtitle: 'Intro, client logos, main video and featured projects',
       };
     },
   },
@@ -243,4 +297,4 @@ const siteSettings = defineType({
   },
 });
 
-export const schemaTypes = [projectMedia, project, homePage, siteSettings];
+export const schemaTypes = [projectMedia, clientLogo, project, homePage, siteSettings];

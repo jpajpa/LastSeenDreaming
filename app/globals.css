@@ -168,14 +168,6 @@ video { max-width: 100%; }
 .client-strip { margin-top: 96px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 20px; color: #b6b5b4; }
 .client-logo { flex: 1 1 0; min-width: 0; height: 64px; display: grid; place-items: center; }
 .client-logo img { display: block; width: auto; height: 30px; max-width: 145px; object-fit: contain; transform: scale(var(--client-logo-scale, 1)); filter: contrast(0) brightness(0.99); opacity: 1; mix-blend-mode: normal; transition: opacity .2s ease, transform .2s ease; }
-.client-logo--uber-eats { --client-logo-scale: .82; }
-.client-logo--apple-music { --client-logo-scale: .85; }
-.client-logo--roc-nation { --client-logo-scale: .9; }
-.client-logo--gq { --client-logo-scale: 1.15; }
-.client-logo--philips { --client-logo-scale: .82; }
-.client-logo--soccer-aid { --client-logo-scale: 1.85; }
-.client-logo--north-face { --client-logo-scale: 1.1; }
-.client-logo--universal { --client-logo-scale: 1.1; }
 .client-logo:hover img { opacity: .8; }
 
 .dream { height: 769px; min-height: 0; margin-top: 260px; position: relative; overflow: visible; font: 42px/55px var(--serif); }
