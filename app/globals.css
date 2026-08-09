@@ -267,6 +267,8 @@ video { max-width: 100%; }
 .project-title { text-align: center; }
 .hero-media { position: relative; width: min(1200px, calc(100% - 56px)); aspect-ratio: 2 / 1; margin: 0 auto 58px; overflow: hidden; border-radius: 12px; }
 .project-copy { width: min(510px, calc(100% - 56px)); margin: 0 max(7%, calc((100% - 1248px) / 2)) 90px; font-size: 19px; line-height: 1.35; }
+.view-project-link { display: inline-block; margin-top: 24px; padding: 12px 28px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 40px; color: white; font: 15px var(--sans); text-decoration: none; letter-spacing: 0.02em; transition: border-color 0.3s ease, opacity 0.3s ease; }
+.view-project-link:hover { border-color: rgba(255, 255, 255, 0.5); opacity: 0.8; }
 .gallery { width: min(1200px, calc(100% - 56px)); margin: auto; display: grid; gap: 64px; }
 .gallery figure { margin: 0; }
 .gallery img, .gallery video { width: 100%; display: block; border-radius: 11px; }

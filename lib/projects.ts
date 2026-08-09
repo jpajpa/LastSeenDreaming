@@ -24,6 +24,7 @@ export type Project = {
   cover: MediaItem;
   gallery: MediaItem[];
   featured: boolean;
+  externalUrl?: string;
 };
 
 type CmsMedia = {
@@ -43,6 +44,7 @@ type CmsProject = {
   discipline?: string;
   description?: string;
   featured?: boolean;
+  externalUrl?: string;
   mainMedia?: CmsMedia;
   additionalMedia?: CmsMedia[];
 };
@@ -55,6 +57,7 @@ const projectQuery = `*[_type == "project" && defined(slug.current)] | order(_up
   "discipline": projectType,
   description,
   featured,
+  externalUrl,
   "mainMedia": {
     "type": mainMedia.mediaType,
     "src": select(
@@ -168,6 +171,7 @@ function normalizeProject(project: CmsProject): Project | null {
     cover,
     gallery: [cover, ...additionalMedia],
     featured: Boolean(project.featured),
+    externalUrl: project.externalUrl,
   };
 }
 

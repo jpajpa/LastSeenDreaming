@@ -98,7 +98,7 @@ export default async function HomePage() {
         </span>)}
       </div>}
     </section></Reveal>
-    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some ideas show up <em>like something you saw in your dream</em></p><p className="muted">Vivid and restless, but gone, if you don&apos;t chase them</p></section></Reveal>
+    <Reveal className="home-dream-reveal"><section className="dream content-width"><Atmosphere variant="dream" /><p>Some things you see <em>with your eyes shut.</em></p><p className="muted">We stay with them until they become real.</p></section></Reveal>
     <Reveal className="home-showcase-reveal">
       <ProjectShowcase projects={featuredProjects.slice(0, 3)} />
     </Reveal>

@@ -64,6 +64,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <Reveal className="project-copy-reveal">
         <div className="project-copy">
           <p>{project.description}</p>
+          {project.externalUrl ? <a href={project.externalUrl} target="_blank" rel="noopener noreferrer" className="view-project-link">View project ↗</a> : null}
         </div>
       </Reveal>
 

@@ -177,6 +177,13 @@ const project = defineType({
       group: 'settings',
       validation: (Rule) => Rule.regex(/^\d{4}$/, { name: 'year', invert: false }).warning('Use a four-digit year.'),
     }),
+    defineField({
+      name: 'externalUrl',
+      title: 'External link',
+      type: 'url',
+      group: 'settings',
+      description: 'Link to the live project (e.g. YouTube, Vimeo, website).',
+    }),
   ],
   orderings: [
     {
